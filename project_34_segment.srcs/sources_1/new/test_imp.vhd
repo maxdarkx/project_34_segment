@@ -36,9 +36,9 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 entity test_imp is
 Port ( 
        CLK : in  STD_LOGIC;
-       RST : in  STD_LOGIC;
-       HS :  out  STD_LOGIC;
-       VS : out  STD_LOGIC;
+       --RST : in  STD_LOGIC;
+      -- HS :  out  STD_LOGIC;
+       --VS : out  STD_LOGIC;
        sel: in std_logic_vector(1 downto 0); -- selector entre grupo, cedulas, nombres y apellidos
        ori: in std_logic_vector(3 downto 0); --selector de la orientacion
        RGB : out  STD_LOGIC_VECTOR (11 downto 0)
@@ -48,19 +48,19 @@ end test_imp;
 
 architecture Behavioral of test_imp is
 
-	COMPONENT vga_ctrl_640x480_60Hz
-	PORT(
-			rst : IN std_logic;
-			clk : IN std_logic;
-			rgb_in : IN std_logic_vector(11 downto 0);          
-			HS : OUT std_logic;
-			VS : OUT std_logic;
-			hcount : OUT std_logic_vector(10 downto 0);
-			vcount : OUT std_logic_vector(10 downto 0);
-			rgb_out : OUT std_logic_vector(11 downto 0);
-			blank : OUT std_logic
-		);
-	END COMPONENT;
+	--COMPONENT vga_ctrl_640x480_60Hz
+	--PORT(
+	--		rst : IN std_logic;
+	--		clk : IN std_logic;
+	--		rgb_in : IN std_logic_vector(11 downto 0);          
+	--		HS : OUT std_logic;
+	--		VS : OUT std_logic;
+	--		hcount : OUT std_logic_vector(10 downto 0);
+	--		vcount : OUT std_logic_vector(10 downto 0);
+	--		rgb_out : OUT std_logic_vector(11 downto 0);
+	--		blank : OUT std_logic
+	--	);
+	--END COMPONENT;
 	
 	COMPONENT display_34 
 	GENERIC ( 
@@ -209,17 +209,17 @@ begin
 	
 	rgb_aux <= paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0;
 
-	Inst_vga_ctrl_640x480_60Hz: vga_ctrl_640x480_60Hz PORT MAP(
-		rst => RST,
-		clk => clk_interno,
-		rgb_in => rgb_aux,
-		HS => HS,
-		VS => VS,
-		hcount => hcount,
-		vcount => vcount,
-		rgb_out => rgb_auxx,
-		blank => open
-	);
+	--Inst_vga_ctrl_640x480_60Hz: vga_ctrl_640x480_60Hz PORT MAP(
+	--	rst => RST,
+	--	clk => clk_interno,
+	--	rgb_in => rgb_aux,
+	--	HS => HS,
+	--	VS => VS,
+	--	hcount => hcount,
+	--	vcount => vcount,
+	--	rgb_out => rgb_auxx,
+	--	blank => open
+	--);
 
 	RGB <= rgb_auxx;
 

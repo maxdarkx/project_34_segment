@@ -1,0 +1,107 @@
+/*
+
+Vivado v2017.2.1 (64-bit)
+SW Build 1957588 on Wed Aug  9 16:32:24 MDT 2017
+IP Build 1948039 on Wed Aug  9 18:19:28 MDT 2017
+
+Process ID: 14648
+License: Customer
+
+Current time: 	10/22/17 7:38:24 PM COT
+Time zone: 	Colombia Time (America/Bogota)
+
+OS: Windows 10
+OS Version: 10.0
+OS Architecture: amd64
+Available processors (cores): 8
+
+Screen size: 2560x1080
+Screen resolution (DPI): 96
+Available screens: 1
+Available disk space: 214 GB
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+
+Java version: 	1.8.0_112 64-bit
+Java home: 	D:/Programas/xilinx/Vivado/2017.2/tps/win64/jre
+JVM executable location: 	D:/Programas/xilinx/Vivado/2017.2/tps/win64/jre/bin/java.exe
+Java library paths: D:/Programas/xilinx/Vivado/2017.2/bin/unwrapped/win64.o;C:/WINDOWS/Sun/Java/bin;C:/WINDOWS/system32;C:/WINDOWS;D:/Programas/xilinx/Vivado/2017.2/bin;D:/Programas/xilinx/Vivado/2017.2/lib/win64.o;D:/Programas/xilinx/Vivado/2017.2/tps/win64/jre/bin/server;D:/Programas/xilinx/Vivado/2017.2/tps/win64/jre/bin;D:/Programas/xilinx/Vivado/2017.2/ids_lite/ISE/bin/nt64;D:/Programas/xilinx/Vivado/2017.2/ids_lite/ISE/lib/nt64;D:/Programas/xilinx/Vivado_HLS/2017.2/bin;C:/WINDOWS/system32;C:/WINDOWS;C:/WINDOWS/System32/Wbem;C:/WINDOWS/System32/WindowsPowerShell/v1.0/;C:/Program Files/MATLAB/R2014a/runtime/win64;C:/Program Files/MATLAB/R2014a/bin;C:/Program Files/MATLAB/R2014a/polyspace/bin;C:/QT/opencv;C:/QT/opencv/build;C:/Qt/Tools/mingw530_32/bin;C:/QT/Qt5.9.2/Tools/mingw530_32/bin;C:/OpenCV/release/bin;C:/QT/Qt5.9.2/Tools/QtCreator/bin;C:/Program Files/mingw-w64/x86_64-7.1.0-win32-sjlj-rt_v5-rev2/mingw64/bin;C:/Users/Juan Carlos/AppData/Local/Programs/Python/Python35/Scripts/;C:/Users/Juan Carlos/AppData/Local/Programs/Python/Python35/;C:/Users/Juan Carlos/AppData/Local/Microsoft/WindowsApps;C:/QT/OpenCV/Build/x86/vc10;C:/QT/OpenCV/Build/x64/vc10;C:/QT/OpenCV/Build/x86/vc11;C:/QT/OpenCV/Build/x64/vc11;C:/Users/Juan Carlos/AppData/Local/GitHubDesktop/bin;D:/Programas/xilinx/Vivado/2017.2/tps/mingw/6.2.0/win64.o/nt/bin;D:/Programas/xilinx/Vivado/2017.2/tps/mingw/6.2.0/win64.o/nt/libexec/gcc/x86_64-w64-mingw32/6.2.0;.
+
+User name: 	Juan Carlos
+User home directory: C:/Users/Juan Carlos
+User working directory: C:/Users/Juan Carlos/Xilinx/project 34 segment/project_34_segment
+User country: 	ES
+User language: 	es
+User locale: 	es_ES
+
+RDI_BASEROOT: D:/Programas/xilinx/Vivado
+HDI_APPROOT: D:/Programas/xilinx/Vivado/2017.2
+RDI_DATADIR: D:/Programas/xilinx/Vivado/2017.2/data
+RDI_BINDIR: D:/Programas/xilinx/Vivado/2017.2/bin
+
+User preferences location: C:/Users/Juan Carlos/AppData/Roaming/Xilinx/Vivado
+Vivado preferences directory: C:/Users/Juan Carlos/AppData/Roaming/Xilinx/Vivado/2017.2/vivado.xml
+Vivado layouts directory: C:/Users/Juan Carlos/AppData/Roaming/Xilinx/Vivado/2017.2/layouts
+PlanAhead jar location: 	D:/Programas/xilinx/Vivado/2017.2/lib/classes/planAhead.jar
+Vivado Look & Feel: 	[Synthetica - the extended Synth Look and Feel. - ui.g.i.H]
+Engine tmp dir: 	C:/Users/Juan Carlos/Xilinx/project 34 segment/project_34_segment/.Xil/Vivado-14648-JORGE-052
+
+GUI allocated memory:	123 MB
+GUI max memory:		3,052 MB
+Engine allocated memory: 587 MB
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+// TclEventType: PROJECT_OPEN_DIALOG
+// bs:g (cg:JFrame):  Open Project : addNotify
+// Opening Vivado Project: C:\Users\Juan Carlos\Xilinx\project 34 segment\project_34_segment\project_34_segment.xpr. Version: Vivado v2017.2.1 
+// [GUI Memory]: 40 MB (+39409kb) [00:00:08]
+// [Engine Memory]: 508 MB (+381606kb) [00:00:08]
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: MSGMGR_MOVEMSG
+// Tcl Message: open_project {C:/Users/Juan Carlos/Xilinx/project 34 segment/project_34_segment/project_34_segment.xpr} 
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_NEW
+// Tcl Message: open_project {C:/Users/Juan Carlos/Xilinx/project 34 segment/project_34_segment/project_34_segment.xpr} 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified 
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 74 MB (+33799kb) [00:00:11]
+// [Engine Memory]: 550 MB (+16708kb) [00:00:11]
+// [Engine Memory]: 587 MB (+9677kb) [00:00:12]
+// Tcl Message: INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Programas/xilinx/Vivado/2017.2/data/ip'. 
+// HMemoryUtils.trashcanNow. Engine heap size: 592 MB. GUI used memory: 39 MB. Current time: 10/22/17 7:38:25 PM COT
+// Project name: project_34_segment; location: C:/Users/Juan Carlos/Xilinx/project 34 segment/project_34_segment; part: xc7a35tcpg236-1
+dismissDialog("Open Project"); // bs:g (cg:JFrame)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// Tcl Message: update_compile_order -fileset sources_1 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_compile_order -fileset sources_1 
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED

@@ -41,9 +41,9 @@ architecture Behavioral of test_imp_sim is
 component test_imp
 Port ( 
        CLK : in  STD_LOGIC;
-       RST : in  STD_LOGIC;
-       HS :  out  STD_LOGIC;
-       VS : out  STD_LOGIC;
+       --RST : in  STD_LOGIC;
+      -- HS :  out  STD_LOGIC;
+       --VS : out  STD_LOGIC;
        sel: in std_logic_vector(1 downto 0); -- selector entre grupo, cedulas, nombres y apellidos
        ori: in std_logic_vector(3 downto 0); --selector de la orientacion
        RGB : out  STD_LOGIC_VECTOR (11 downto 0)
@@ -61,9 +61,9 @@ begin
 
 test: test_imp port map(
     clk=>CLK_100,
-    rst=>reset,
-    hs=>hs,
-    vs=>vs,
+    --rst=>reset,
+    --hs=>hs,
+    --vs=>vs,
     sel=>sele,
     ori=>origin,
     rgb=>rgb_out
