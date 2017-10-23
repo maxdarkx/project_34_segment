@@ -13,3 +13,29 @@ start_gui
 open_project {C:/Users/Juan Carlos/Xilinx/project 34 segment/project_34_segment/project_34_segment.xpr}
 update_compile_order -fileset sources_1
 update_compile_order -fileset sources_1
+launch_simulation
+source test_imp_sim.tcl
+close_sim
+launch_simulation
+launch_simulation
+source test_imp_sim.tcl
+close_sim
+launch_simulation
+source test_imp_sim.tcl
+set_property -name {xsim.simulate.runtime} -value {921000ns} -objects [get_filesets sim_1]
+close_sim
+launch_simulation
+source test_imp_sim.tcl
+close_sim
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+source test_imp_sim.tcl
+close_sim
+launch_simulation
+source test_imp_sim.tcl

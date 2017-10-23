@@ -221,6 +221,7 @@ begin
 	--	blank => open
 	--);
 
-	RGB <= rgb_auxx;
+	--RGB <= rgb_auxx;
+	rgb <=rgb_aux;
 
 end Behavioral;

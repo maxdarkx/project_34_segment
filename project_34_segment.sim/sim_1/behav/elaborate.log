@@ -13,11 +13,9 @@ Compiling package ieee.std_logic_1164
 Compiling package ieee.std_logic_arith
 Compiling package ieee.std_logic_unsigned
 Compiling package ieee.numeric_std
-Compiling package unisim.vcomponents
 Compiling architecture behavioral of entity xil_defaultlib.nombres [nombres_default]
 Compiling architecture behavioral of entity xil_defaultlib.segment_decoder_34 [segment_decoder_34_default]
 Compiling architecture behavioral of entity xil_defaultlib.display_34 [display_34_default]
-Compiling architecture behavioral of entity xil_defaultlib.vga_ctrl_640x480_60Hz [vga_ctrl_640x480_60hz_default]
 Compiling architecture behavioral of entity xil_defaultlib.test_imp [test_imp_default]
 Compiling architecture behavioral of entity xil_defaultlib.test_imp_sim
 Built simulation snapshot test_imp_sim_behav
