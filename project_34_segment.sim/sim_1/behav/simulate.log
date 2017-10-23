@@ -1,0 +1,8 @@
+Vivado Simulator 2017.2
+Time resolution is 1 ps
+FATAL_ERROR: Vivado Simulator kernel has discovered an exceptional condition from which it cannot recover. Process will terminate. For technical support on this issue, please open a WebCase with this project attached at http://www.xilinx.com/support.
+Time: 0 ps  Iteration: 0  Process: /documentos/ced29/diag_segments
+  File: C:/Users/Juan Carlos/Xilinx/project 34 segment/project_34_segment/project_34_segment.srcs/sources_1/new/display_34.vhd
+
+HDL Line: C:/Users/Juan Carlos/Xilinx/project 34 segment/project_34_segment/project_34_segment.srcs/sources_1/new/display_34.vhd:316
+vhd:316

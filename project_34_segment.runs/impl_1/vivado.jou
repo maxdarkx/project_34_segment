@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2017.2.1 (64-bit)
+# SW Build 1957588 on Wed Aug  9 16:32:24 MDT 2017
+# IP Build 1948039 on Wed Aug  9 18:19:28 MDT 2017
+# Start of session at: Sat Oct 21 21:42:16 2017
+# Process ID: 12604
+# Current directory: C:/Users/Juan Carlos/Xilinx/project 34 segment/project_34_segment/project_34_segment.runs/impl_1
+# Command line: vivado.exe -log test_imp.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source test_imp.tcl -notrace
+# Log file: C:/Users/Juan Carlos/Xilinx/project 34 segment/project_34_segment/project_34_segment.runs/impl_1/test_imp.vdi
+# Journal file: C:/Users/Juan Carlos/Xilinx/project 34 segment/project_34_segment/project_34_segment.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source test_imp.tcl -notrace

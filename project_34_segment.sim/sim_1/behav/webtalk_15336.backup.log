@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Webtalk v2017.2.1 (64-bit)
+# SW Build 1957588 on Wed Aug  9 16:32:24 MDT 2017
+# IP Build 1948039 on Wed Aug  9 18:19:28 MDT 2017
+# Start of session at: Sat Oct 21 22:09:37 2017
+# Process ID: 15336
+# Current directory: C:/Users/Juan Carlos/Xilinx/project 34 segment/project_34_segment/project_34_segment.sim/sim_1/behav
+# Command line: wbtcv.exe -mode batch -source C:/Users/Juan Carlos/Xilinx/project 34 segment/project_34_segment/project_34_segment.sim/sim_1/behav/xsim.dir/test_imp_sim_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: C:/Users/Juan Carlos/Xilinx/project 34 segment/project_34_segment/project_34_segment.sim/sim_1/behav/webtalk.log
+# Journal file: C:/Users/Juan Carlos/Xilinx/project 34 segment/project_34_segment/project_34_segment.sim/sim_1/behav\webtalk.jou
+#-----------------------------------------------------------
+source C:/Users/Juan -notrace
+couldn't read file "C:/Users/Juan": no such file or directory
+INFO: [Common 17-206] Exiting Webtalk at Sat Oct 21 22:09:37 2017...
