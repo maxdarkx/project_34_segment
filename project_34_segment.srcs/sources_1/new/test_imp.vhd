@@ -35,7 +35,9 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 
 entity test_imp is
 Port ( 
-       CLK : in  STD_LOGIC;
+       CLK :   in  STD_LOGIC;
+       hcount: in  STD_LOGIC_VECTOR (10 downto 0);  --para simular
+       vcount: in  STD_LOGIC_VECTOR (10 downto 0);	--para simular
        --RST : in  STD_LOGIC;
       -- HS :  out  STD_LOGIC;
        --VS : out  STD_LOGIC;
@@ -95,8 +97,8 @@ architecture Behavioral of test_imp is
 	
 	-- Declaramos seales
 	signal val,val1,val2,val3,val4: STD_LOGIC_VECTOR(5 downto 0):=(others=>'0') ;
-	signal hcount : STD_LOGIC_VECTOR (10 downto 0):=(others=>'0');
-	signal vcount : STD_LOGIC_VECTOR (10 downto 0):=(others=>'0');
+	--signal hcount : STD_LOGIC_VECTOR (10 downto 0):=(others=>'0'); --para simular
+	--signal vcount : STD_LOGIC_VECTOR (10 downto 0):=(others=>'0'); --para simular
     signal paint0,paint1,paint2,paint3 : STD_LOGIC:='0';
     signal rgb_x: std_logic:='0';
     signal rgb_aux : STD_LOGIC_VECTOR (11 downto 0):=(others=>'0');
@@ -145,37 +147,37 @@ begin
 			posy	=> py1
 		); 
 
-	lista2:  nombres 
-			port MAP(
-			hcount	=> hcount,
-			vcount	=> vcount,
-			sel 	=> ori,
-			value 	=> val2,
-			posx	=> px2,
-			posy	=> py2
-		); 
+	--lista2:  nombres 
+	--		port MAP(
+	--		hcount	=> hcount,
+	--		vcount	=> vcount,
+	--		sel 	=> ori,
+	--		value 	=> val2,
+	--		posx	=> px2,
+	--		posy	=> py2
+	--	); 
 	 
 	
-	lista3:  nombres 			
-	port MAP(
-			hcount	=> hcount,
-			vcount	=> vcount,
-			sel 	=> ori,
-			value 	=> val3,
-			posx	=> px3,
-			posy	=> py3
-		); 
+	--lista3:  nombres 			
+	--port MAP(
+	--		hcount	=> hcount,
+	--		vcount	=> vcount,
+	--		sel 	=> ori,
+	--		value 	=> val3,
+	--		posx	=> px3,
+	--		posy	=> py3
+	--	); 
 	 
 
-	lista4:  nombres		
-	port MAP(
-			hcount	=> hcount,
-			vcount	=> vcount,
-			sel 	=> ori,
-			value 	=> val4,
-			posx	=> px4,
-			posy	=> py4
-		); 
+	--lista4:  nombres		
+	--port MAP(
+	--		hcount	=> hcount,
+	--		vcount	=> vcount,
+	--		sel 	=> ori,
+	--		value 	=> val4,
+	--		posx	=> px4,
+	--		posy	=> py4
+	--	); 
 
 	mostrar: display_34
 		port map(
@@ -190,19 +192,19 @@ begin
 
 	 
 	px <= 	px1 when sel= "00" else --APELLIDOS
-			px2 when sel= "01" else --CEDULAS
-	        px3 when sel= "10" else --NOMBRES
-			px4 when sel= "11" else --GRUPO
+			--px2 when sel= "01" else --CEDULAS
+	  --      px3 when sel= "10" else --NOMBRES
+			--px4 when sel= "11" else --GRUPO
 			0; --modificar con degradado process
 	py <= 	py1 when sel= "00" else --APELLIDOS
-			py2 when sel= "01" else --CEDULAS
-	        py3 when sel= "10" else --NOMBRES
-			py4 when sel= "11" else --GRUPO
+			--py2 when sel= "01" else --CEDULAS
+	  --      py3 when sel= "10" else --NOMBRES
+			--py4 when sel= "11" else --GRUPO
 			0; --modificar con degradado process
 	val <= 	val1 when sel= "00" else --APELLIDOS
-			val2 when sel= "01" else --CEDULAS
-	        val3 when sel= "10" else --NOMBRES
-			val4 when sel= "11" else --GRUPO
+			--val2 when sel= "01" else --CEDULAS
+	  --      val3 when sel= "10" else --NOMBRES
+			--val4 when sel= "11" else --GRUPO
 			"100100"; --modificar con degradado process
 
 

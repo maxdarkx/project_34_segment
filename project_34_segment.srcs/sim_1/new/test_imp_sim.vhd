@@ -41,6 +41,8 @@ architecture Behavioral of test_imp_sim is
 component test_imp
 Port ( 
        CLK : in  STD_LOGIC;
+       hcount: in  STD_LOGIC_VECTOR (10 downto 0);  --para simular
+       vcount: in  STD_LOGIC_VECTOR (10 downto 0);	--para simular
        --RST : in  STD_LOGIC;
       -- HS :  out  STD_LOGIC;
        --VS : out  STD_LOGIC;
@@ -56,12 +58,18 @@ end component;
 	SIGNAL origin : STD_LOGIC_VECTOR(3 downto 0):="0000";
 	SIGNAL rgb_out: std_logic_vector(11 downto 0):= (others=>'0');
 	--signal hs,vs: std_logic:='0';
-	signal reset: std_logic:='1';
-	signal hcount,vcount :integer := 0;
+	--signal reset: std_logic:='1';
+	signal hcount,vcount : STD_LOGIC_VECTOR (10 downto 0) := (others=>'0');
+
+	
 begin
+
+
 
 test: test_imp port map(
     clk=>CLK_100,
+    hcount=>hcount,
+    vcount=>vcount,
     --rst=>reset,
     --hs=>hs,
     --vs=>vs,
@@ -78,16 +86,19 @@ begin
 end process;
 
 hvsync: process(clk_100)
+   
 begin
 	if(clk_100'event and clk_100='1') then
-		hcount<= hcount+1;
-		if hcount=640 then
-			hcount<=0;
-			vcount<=vcount+1;
+
+		
+		hcount<= hcount+'1';
+		if hcount=641 then
+			hcount<= "00000000000";
+			vcount<=vcount+'1';
 		end if;
 
 		if (vcount=481) then
-			vcount<=0;
+			vcount<= "00000000000";
 		end if;
 	end if;
 end process;
@@ -96,27 +107,31 @@ end process;
 
 
 
-process(hcount, vcount)
-    file solucion: text;
-    variable texto: line;
+process(hcount)
+	variable texto1: line;
     variable color1,color2,color3: integer;
     variable temp: std_logic_vector (3 downto 0);
+    file solucion: text;
 begin
-	file_open(solucion, "resultados.mout",  write_mode);
-	
+	file_open(solucion, "resultados.mout",  append_mode);
 	temp:= rgb_out(3) & rgb_out(2) & rgb_out(1) & rgb_out(0);
 	color1:= conv_integer(temp);
 	temp:= rgb_out(7) & rgb_out(6) & rgb_out(5) & rgb_out(4);
 	color2:= conv_integer(temp);
-	
 	temp:= rgb_out(11) & rgb_out(10) & rgb_out(9) & rgb_out(8);
 	color3:= conv_integer(temp);
 	
-	write (texto, color1);
-	write (texto, color2);
-	write (texto, color3);
-	writeline (solucion, texto);
+	
+	write (texto1, color1);
+	--write (texto1, string'(",");
+	--write (texto1, color2);
+	--write (texto1, string'(","));
+	--write (texto1, color3);
+	--write (texto1, string'(") "));
+	writeline (solucion, texto1);
+
 	file_close(solucion);
+	
 end process;
 
 
