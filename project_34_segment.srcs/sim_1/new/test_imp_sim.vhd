@@ -67,7 +67,7 @@ begin
 
 
 test: test_imp port map(
-    clk=>CLK_100,
+    clk=>clk_100,
     hcount=>hcount,
     vcount=>vcount,
     --rst=>reset,
@@ -92,13 +92,13 @@ begin
 
 		
 		hcount<= hcount+'1';
-		if hcount=641 then
+		if hcount=640 then
 			hcount<= "00000000000";
 			vcount<=vcount+'1';
-		end if;
-
-		if (vcount=481) then
-			vcount<= "00000000000";
+			if(vcount>480) then
+				vcount<= "00000000000";
+			end if;
+			
 		end if;
 	end if;
 end process;
@@ -112,25 +112,68 @@ process(hcount)
     variable color1,color2,color3: integer;
     variable temp: std_logic_vector (3 downto 0);
     file solucion: text;
+    variable c: std_logic:='0';
 begin
-	file_open(solucion, "resultados.mout",  append_mode);
+	file_open(solucion, "resultados.m",  append_mode);
 	temp:= rgb_out(3) & rgb_out(2) & rgb_out(1) & rgb_out(0);
 	color1:= conv_integer(temp);
 	temp:= rgb_out(7) & rgb_out(6) & rgb_out(5) & rgb_out(4);
-	color2:= conv_integer(temp);
-	temp:= rgb_out(11) & rgb_out(10) & rgb_out(9) & rgb_out(8);
-	color3:= conv_integer(temp);
+	--color2:= conv_integer(temp);
+	--temp:= rgb_out(11) & rgb_out(10) & rgb_out(9) & rgb_out(8);
+	--color3:= conv_integer(temp);
 	
-	
+	if(vcount=0 and hcount=0 and c='0') then
+		write(texto1,string'("clear all;"));
+		writeline(solucion,texto1);
+		write(texto1,string'("close all;"));
+		writeline(solucion,texto1);
+		write(texto1,string'("clc;"));
+		writeline(solucion,texto1);
+		write(texto1,string'("a=["));
+		c:= not c;
+		--write(texto1,string'(""));
+	end if;
+
+
+
+
+
 	write (texto1, color1);
-	--write (texto1, string'(",");
+
+	if(hcount<640)then
+		write (texto1, string'(","));
+	else
+		if (vcount<=480) then
+			write (texto1, string'(";"));
+			write(texto1, string'("   %("));
+			write(texto1, conv_integer(hcount));
+			write(texto1, string'(","));
+			write(texto1, conv_integer(vcount));
+			write(texto1, string'(")"));
+			writeline (solucion, texto1);
+
+			if (vcount=480) then
+				write (texto1, string'("];"));
+				writeline (solucion, texto1);
+				write(texto1,string'("imshow(a);"));
+				writeline (solucion, texto1);
+				write(texto1,string'("impixelinfo();"));
+				writeline (solucion, texto1);
+				file_close(solucion);
+			end if;
+			
+			
+			
+		end if;
+	end if;
+
+	
 	--write (texto1, color2);
 	--write (texto1, string'(","));
 	--write (texto1, color3);
 	--write (texto1, string'(") "));
-	writeline (solucion, texto1);
 
-	file_close(solucion);
+	
 	
 end process;
 

@@ -106,10 +106,10 @@ architecture Behavioral of test_imp is
 	signal rgb_aux1 : STD_LOGIC_VECTOR (3 downto 0):="0000";
 	signal rgb_aux2 : STD_LOGIC_VECTOR (3 downto 0):="0000";
 	signal rgb_aux3 : STD_LOGIC_VECTOR (3 downto 0):="0000";
-	signal CLK_1Hz : STD_LOGIC:='0';
-	signal count_clk : INTEGER:=0;
+	--signal CLK_1Hz : STD_LOGIC:='0';
+	--signal count_clk : INTEGER:=0;
 	signal count_color: integer:=0;
-	signal clk_interno : STD_LOGIC:='0';
+	--signal clk_interno : STD_LOGIC:='0';
 	signal count_1hz: INTEGER := 0;
 	signal px,px1,px2,px3,px4: integer:=0;
 	signal py,py1,py2,py3,py4: integer:=0;
@@ -117,25 +117,25 @@ architecture Behavioral of test_imp is
 
 begin
 
- 	CLK_50MHZ: process (CLK)
-    begin  
-        if (CLK'event and CLK = '1') then
-            clk_interno <= NOT clk_interno;
-        end if;
-    end process;
+ --	CLK_50MHZ: process (CLK)
+ --   begin  
+ --       if (CLK'event and CLK = '1') then
+ --           clk_interno <= NOT clk_interno;
+ --       end if;
+ --   end process;
 	
 
-	CLK_DIV: process (clk_interno)
-	begin
-		if(clk_interno'event and clk_interno='1') then
-			if (count_clk = 5000000) then
-				count_clk <= 0;
-				CLK_1Hz <= not CLK_1Hz;
-			else
-				count_clk <= count_clk +1;
-			end if;
-		end if;
-	end process;
+	--CLK_DIV: process (clk_interno)
+	--begin
+	--	if(clk_interno'event and clk_interno='1') then
+	--		if (count_clk = 5000000) then
+	--			count_clk <= 0;
+	--			CLK_1Hz <= not CLK_1Hz;
+	--		else
+	--			count_clk <= count_clk +1;
+	--		end if;
+	--	end if;
+	--end process;
 	
 	lista1:  nombres 
 	port MAP(

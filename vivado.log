@@ -4264,3 +4264,11 @@ INFO: [Common 17-344] 'xsim' was cancelled
 INFO: [Vivado 12-5357] 'simulate' step aborted
 launch_simulation: Time (s): cpu = 00:00:06 ; elapsed = 00:00:28 . Memory (MB): peak = 1032.066 ; gain = 0.000
 INFO: [Common 17-344] 'launch_simulation' was cancelled
+set_property -name {xsim.compile.incremental} -value {false} -objects [get_filesets sim_1]
+set_property nl.process_corner slow [get_filesets sim_1]
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+exit
+INFO: [Common 17-206] Exiting Vivado at Mon Oct 23 02:02:56 2017...

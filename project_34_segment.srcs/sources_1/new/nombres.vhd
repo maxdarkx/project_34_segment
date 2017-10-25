@@ -46,10 +46,10 @@ end nombres;
 
 architecture Behavioral of nombres is
 
-	constant dl:  integer := 30; --largo del caracter
-	constant dh:  integer := 60; --altura del caracter
-	constant lw:  integer := 3; 	--ancho de las lineas
-	constant esh: integer := 3; --espacio entre caracterers
+	constant dl:  integer := 50; --largo del caracter
+	constant dh:  integer := 100; --altura del caracter
+	constant lw:  integer := 10; 	--ancho de las lineas
+	constant esh: integer := 10; --espacio entre caracterers
 
 	constant th: integer := 640;
 	constant tv: integer := 480;

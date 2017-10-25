@@ -190,3 +190,7 @@ set_property nl.process_corner fast [get_filesets sim_1]
 close_sim
 launch_simulation
 source test_imp_sim.tcl
+set_property -name {xsim.compile.incremental} -value {false} -objects [get_filesets sim_1]
+set_property nl.process_corner slow [get_filesets sim_1]
+close_sim
+close_sim

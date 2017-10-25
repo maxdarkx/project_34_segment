@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1508640130">
+  <File Type="PWROPT-DRC" Name="test_imp_drc_pwropted.rpt"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="test_imp_methodology_drc_opted.rpt"/>
+  <File Type="INIT-TIMING" Name="test_imp_timing_summary_init.rpt"/>
   <File Type="ROUTE-PWR-RPX" Name="test_imp_power_routed.rpx"/>
   <File Type="PA-TCL" Name="test_imp.tcl"/>
-  <File Type="INIT-TIMING" Name="test_imp_timing_summary_init.rpt"/>
-  <File Type="OPT-METHODOLOGY-DRC" Name="test_imp_methodology_drc_opted.rpt"/>
-  <File Type="PWROPT-DRC" Name="test_imp_drc_pwropted.rpt"/>
+  <File Type="OPT-HWDEF" Name="test_imp.hwdef"/>
   <File Type="RDI-RDI" Name="test_imp.vdi"/>
   <File Type="OPT-DCP" Name="test_imp_opt.dcp"/>
-  <File Type="OPT-HWDEF" Name="test_imp.hwdef"/>
   <File Type="OPT-DRC" Name="test_imp_drc_opted.rpt"/>
   <File Type="OPT-TIMING" Name="test_imp_timing_summary_opted.rpt"/>
   <File Type="PWROPT-DCP" Name="test_imp_pwropt.dcp"/>
@@ -31,14 +31,14 @@
   <File Type="ROUTE-BLACKBOX-DCP" Name="test_imp_routed_bb.dcp"/>
   <File Type="ROUTE-DRC" Name="test_imp_drc_routed.rpt"/>
   <File Type="ROUTE-DRC-PB" Name="test_imp_drc_routed.pb"/>
-  <File Type="ROUTE-DRC-RPX" Name="test_imp_drc_routed.rpx"/>
   <File Type="BG-BIN" Name="test_imp.bin"/>
-  <File Type="ROUTE-METHODOLOGY-DRC" Name="test_imp_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-RPX" Name="test_imp_drc_routed.rpx"/>
   <File Type="BG-DRC" Name="test_imp.drc"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="test_imp_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="test_imp_methodology_drc_routed.rpt"/>
   <File Type="BITSTR-MSK" Name="test_imp.msk"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="test_imp_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="test_imp_methodology_drc_routed.rpx"/>
   <File Type="BG-BGN" Name="test_imp.bgn"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="test_imp_methodology_drc_routed.pb"/>
   <File Type="ROUTE-PWR" Name="test_imp_power_routed.rpt"/>
   <File Type="ROUTE-PWR-SUM" Name="test_imp_power_summary_routed.pb"/>
   <File Type="ROUTE-STATUS" Name="test_imp_route_status.rpt"/>

@@ -1,1 +1,1 @@
--wto "eee66d790eb740e9be0fe0ff951268f2" --incr --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "secureip" --snapshot "test_imp_sim_behav" "xil_defaultlib.test_imp_sim" -log "elaborate.log" 
+-wto "eee66d790eb740e9be0fe0ff951268f2" --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "secureip" --snapshot "test_imp_sim_behav" "xil_defaultlib.test_imp_sim" -log "elaborate.log" 
