@@ -48,7 +48,7 @@ architecture Behavioral of nombres is
 
 	constant dl:  integer := 50; --largo del caracter
 	constant dh:  integer := 100; --altura del caracter
-	constant lw:  integer := 10; 	--ancho de las lineas
+	constant lw:  integer := 5; 	--ancho de las lineas
 	constant esh: integer := 10; --espacio entre caracterers
 
 	constant th: integer := 640;
@@ -58,7 +58,7 @@ architecture Behavioral of nombres is
 	constant CC2 : integer := 8; --cantidad de letras para segunda fila (viernes=7)
 	constant esl : integer := dl+lw; --espacio entre palabras
 
-	constant EVU : integer := cc1*(dh+esh); -- espacio vertical utilizado
+	constant EVU : integer := 2*(dh+esh); -- espacio vertical utilizado
 	constant EHU1: integer := cc1*(dl+esh) ; --Espacio horizontal total utilizado fila 1
 	constant EHU2: integer := cc2*(dl+esh) ; --Espacio horizontal total utilizado fila 2
  
@@ -71,10 +71,6 @@ variable px1,px10,px11,px12,px13,px14,px15,px16,px17,px18,px19,px101: integer:=0
 variable px2,px20,px21,px22,px23,px24,px25,px26,px27,px28,px29,px201: integer:=0;
 variable py1,py2,py3: integer;
 begin
-
-
-
-
 
 case sel is
 when "0000" =>	 			--0000	Izquierda – Arriba

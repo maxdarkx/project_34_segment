@@ -32,34 +32,17 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity grupo is --GRUPO N 01=8/ VIERNES=7
-Port (
-	sel: in STD_LOGIC_VECTOR(3 downto 0);
-	hcount: in std_logic_vector(10 downto 0);
-	vcount: in std_logic_vector(10 downto 0);
-	paint: 	out std_logic
-);
+port(
+	hcount: in 	std_logic_vector(10 downto 0);
+	vcount: in 	std_logic_vector(10 downto 0);
+	sel: 	in 	STD_LOGIC_VECTOR(3 downto 0);
+	value:  out	std_logic_vector(5 downto 0);
+	posx: 	out integer;
+	posy: 	out integer
+	);
 end grupo;
 
 architecture Behavioral of grupo is
-
-	component display_34 is
-	generic
-	(
-		lw:   in integer := 10;
-		dl:   in integer := 50;
-		dh:   in integer := 100
-		
-	);
-	Port (
-		value:  in std_logic_vector(5 downto 0);
-		hcount: in std_logic_vector(10 downto 0);
-		vcount: in std_logic_vector(10 downto 0);
-		paint:  out std_logic;
-		posx: in integer := 0;
-		posy: in integer := 0
-			
-	);
-	end component;
 
 	constant dl:  integer := 50; --largo del caracter
 	constant dh:  integer := 100; --altura del caracter
@@ -76,315 +59,139 @@ architecture Behavioral of grupo is
 	constant EVU : integer := cc1*(dh+esh); -- espacio vertical utilizado
 	constant EHU1: integer := cc1*(dl+esh) ; --Espacio horizontal total utilizado fila 1
 	constant EHU2: integer := cc2*(dl+esh) ; --Espacio horizontal total utilizado fila 2
-
-
-	signal d1,d10,d11,d12,d13,d14,d15,d16,d17: std_logic;
-	signal d2,d20,d21,d22,d23,d24,d25,d26: std_logic;
-	signal px1,px10,px11,px12,px13,px14,px15,px16,px17: integer;
-	signal px2,px20,px21,px22,px23,px24,px25,px26: integer; 
-	signal py,py2: integer;
+begin
 begin
 
 
-px1 <= 	0	 			when sel = "0000" else --0000	Izquierda – Arriba
-		(th-ehu1)/2 	when sel = "0001" else --0110	Centrado arriba
-		th-ehu1			when sel = "0010" else --1010	Derecha – Arriba
-		0				when sel = "0011" else --1110	Izquierda – Centro
-		(th-ehu1)/2 	when sel = "0100" else --0010	Centrado – Centro
-		th-ehu1			when sel = "0101" else --0100	derecha – centro
-		0	 			when sel = "0110" else --1000	Izquierda – Abajo
-		(th-ehu1)/2 	when sel = "0111" else --1001	Centrado- Abajo
-		th-ehu1;							   --1101	Derecha –abajo
-		--1110	Una línea  diagonal desde extremo del lado izquierdo-abajo al extremos derecho-arriba del display  de 16 pixel de alto
+	checker: process(hcount,vcount,sel)
+	variable px1,px10,px11,px12,px13,px14,px15,px16,px17,px18,px19,px101: integer:=0;
+	variable px2,px20,px21,px22,px23,px24,px25,px26,px27,px28,px29,px201: integer:=0;
+	variable py1,py2,py3: integer;
+	begin
 
-px2 <= 	0	 			when sel = "0000" else --0000	Izquierda – Arriba
-		(th-ehu2-1)/2 	when sel = "0001" else --0110	Centrado arriba
-		th-ehu2-1		when sel = "0010" else --1010	Derecha – Arriba
-		0				when sel = "0011" else --1110	Izquierda – Centro
-		(th-ehu2-1)/2 	when sel = "0100" else --0010	Centrado – Centro
-		th-ehu2-1		when sel = "0101" else --0100	derecha – centro
-		0	 			when sel = "0110" else --1000	Izquierda – Abajo
-		(th-ehu2-1)/2 	when sel = "0111" else --1001	Centrado- Abajo
-		th-ehu2-1;							   --1101	Derecha –abajo
-		--1110	Una línea  diagonal desde extremo del lado izquierdo-abajo al extremos derecho-arriba del display  de 16 pixel de alto
+		case sel is
+		when "0000" =>	 			--0000	Izquierda – Arriba
 
-py <= 	0	 			when sel = "0000" else --0000	Izquierda – Arriba
-		0 				when sel = "0001" else --0110	Centrado arriba
-		0				when sel = "0010" else --1010	Derecha – Arriba
-		(tv - EVU)/2	when sel = "0011" else --1110	Izquierda – Centro
-		(tv - EVU)/2 	when sel = "0100" else --0010	Centrado – Centro
-		(tv - EVU)/2	when sel = "0101" else --0100	derecha – centro
-		tv - EVU		when sel = "0110" else --1000	Izquierda – Abajo
-		tv - evu 		when sel = "0111" else --1001	Centrado- Abajo
-		tv - evu;							   --1101	Derecha –abajo
-											   --1110	Una línea  diagonal desde extremo del lado izquierdo-abajo al extremos derecho-arriba del display  de 16 pixel de alto
-px10<=px1;
-px11<=px1 + dl + esh;
-px12<=px1 + 2*(dl + esh);
-px13<=px1 + 3*(dl + esh);
-px14<=px1 + 4*(dl + esh);
-px15<=px1 + 5*(dl + esh)+esl;
-px16<=px1 + 6*(dl + esh)+esl;
-px17<=px1 + 7*(dl + esh)+esl;
+			px1 := 	0;	 		
+			px2 := 	0;
+			py1 := 	0;
+		when "0001" =>				 --0001	Centrado arriba
+			px1 := (th-ehu1-1)/2;
+			px2 := (th-ehu2-1)/2; 
+			py1 :=	0;
+		when "0010"	=>				 --0010	Derecha – Arriba
+			px1 := th-ehu1-1;
+			px2 := th-ehu2-1;
+			py1 := 0;
+		when "0011"	=>				 --0011	Izquierda – Centro		
+			px1 := 0;
+			px2 := 0;
+			py1 := (tv - EVU)/2;
+		when "0100"	=>				 --0100 Centrado – Centro
+			px1 := (th-ehu1-1)/2 ;
+			px2 := (th-ehu2-1)/2;
+			py1 := (tv - EVU)/2;
+		when "0101"	=>				 --0101 derecha – centro
+			px1 := th-ehu1-1;
+			px2 := th-ehu2-1;
+			py1 := (tv - EVU)/2;
+		when "0110"	=>				--0110 Izquierda – Abajo
+			px1 := 0;
+			px2 := 0;
+			py1 := tv - EVU;
+		when "0111"	=>	
+			px1 := (th-ehu1)/2;		--0111 Centrado- Abajo
+			px2 := (th-ehu2)/2 ;
+			py1 := tv - EVU;
+		when others	=>				--1000 Derecha –abajo
+			px1 := th-ehu1;
+			px2 := th-ehu2;
+			py1 := tv - EVU;							   
+		end case;
 
-px20<=px2;
-px21<= px2 +dl + esh;
-px22<=px2 + 2*(dl + esh);
-px23<= px2 + 3*(dl + esh);
-px24<=px2 + 4*(dl + esh);
-px25<=px2 + 5*(dl + esh);
+		py2:=py1+dh+esl;											   --1110	Una línea  diagonal desde extremo del lado izquierdo-abajo al extremos derecho-arriba del display  de 16 pixel de alto
+		py3:=py1+2*dh;
 
+		px10:= px1;
+		px11:= px1 + dl + esh;
+		px12:= px1 + 2*(dl + esh);
+		px13:= px1 + 3*(dl + esh);
+		px14:= px1 + 4*(dl + esh);
+		px15:= px1 + 5*(dl + esh);
+		px16:= px1 + 7*(dl + esh);
+		px17:= px1 + 8*(dl + esh);
+		px101:=px1 + 9*(dl + esh);
 
-py2<=py2;
+		px20:= px2;
+		px21:= px2 +dl + esh;
+		px22:= px2 + 2*(dl + esh);
+		px23:= px2 + 3*(dl + esh);
+		px24:= px2 + 4*(dl + esh);
+		px25:= px2 + 5*(dl + esh);
+		px26:= px2 + 6*(dl + esh);
+		px27:= px2 + 7*(dl + esh);
+		px201:= px2 + 8*(dl + esh);
 
+		if (vcount > py1) and (vcount <py2) then
+			posy<=py1;
 
-
-dd10: display_34 
-		GENERIC MAP (
-			LW => lw,
-			DL => dl,
-			DH => dh)
-		Port map 
-		(
-			value  => "000110",--G
-			hcount => hcount,
-			vcount => vcount,
-			paint => d10,
-			POSX => px10,
-			POSY => py
-		);
-
-dd11: display_34 
-		GENERIC MAP (
-			LW => lw,
-			DL => dl,
-			DH => dh)
-		Port map 
-		(
-			value  => "010001",--R
-			hcount => hcount,
-			vcount => vcount,
-			paint => d11,
-			POSX =>  px11,
-			POSY => py
-		);
-
-dd12: display_34 
-
-		GENERIC MAP
-		(
-			LW => lw,
-			DL => dl,
-			DH => dh)
-		Port map 
-		(
-			value  => "010100",--U
-			hcount => hcount,
-			vcount => vcount,
-			paint => d12,
-			POSX => px12,
-			POSY => py
-		);
-
-dd13: display_34 
-		GENERIC MAP
-		(
-			LW => lw,
-			DL => dl,
-			DH => dh)
-		Port map 
-		(
-			value  => "001111",--P
-			hcount => hcount,
-			vcount => vcount,
-			paint => d13,
-			POSX =>  px13,
-			POSY => py
-		);
-
-dd14: display_34 
-		GENERIC MAP
-		(
-			LW => lw,
-			DL => dl,
-			DH => dh)
-		Port map 
-		(
-			value  => "001110",--O
-			hcount => hcount,
-			vcount => vcount,
-			paint => d14,
-			POSX => px14,
-			POSY => py
-		);
-
-dd15: display_34 
-		GENERIC MAP
-		(
-			LW => lw,
-			DL => dl,
-			DH => dh)
-		Port map 
-		(
-			value  => "001101",--N
-			hcount => hcount,
-			vcount => vcount,
-			paint => d15,
-			POSX => px15,
-			POSY => py
-		);
-
-dd16: display_34 
-		GENERIC MAP
-		(
-			LW => lw,
-			DL => dl,
-			DH => dh)
-		Port map 
-		(
-			value  => "011010",--0
-			hcount => hcount,
-			vcount => vcount,
-			paint => d16,
-			POSX => px16,
-			POSY => py
-		);
-
-dd17: display_34 
-		GENERIC MAP
-		(
-			LW => lw,
-			DL => dl,
-			DH => dh)
-		Port map 
-		(
-			value  => "011011",--1
-			hcount => hcount,
-			vcount => vcount,
-			paint => d17,
-			POSX => px17,
-			POSY => py
-		);
-
-
-dd20: display_34 
-		GENERIC MAP (
-			LW => lw,
-			DL => dl,
-			DH => dh)
-		Port map 
-		(
-			value  => "010101",--V
-			hcount => hcount,
-			vcount => vcount,
-			paint => d20,
-			POSX => px20,
-			POSY => py2
-		);
-
-
-dd21: display_34 
-		GENERIC MAP (
-			LW => lw,
-			DL => dl,
-			DH => dh)
-		Port map 
-		(
-			value  => "001000", --I
-			hcount => hcount,
-			vcount => vcount,
-			paint => d21,
-			POSX => px21,
-			POSY => py2
-		);
-
-dd22: display_34 
-
-		GENERIC MAP
-		(
-			LW => lw,
-			DL => dl,
-			DH => dh)
-		Port map 
-		(
-			value  => "000100", --E
-			hcount => hcount,
-			vcount => vcount,
-			paint => d22,
-			POSX => px22,
-			POSY => py2
-		);
-
-dd23: display_34 
-		GENERIC MAP
-		(
-			LW => lw,
-			DL => dl,
-			DH => dh)
-		Port map 
-		(
-			value  => "010001",--R
-			hcount => hcount,
-			vcount => vcount,
-			paint => d23,
-			POSX =>  px23,
-			POSY => py2
-		);
-
-dd24: display_34 
-		GENERIC MAP
-		(
-			LW => lw,
-			DL => dl,
-			DH => dh)
-		Port map 
-		(
-			value  => "001101", --N
-			hcount => hcount,
-			vcount => vcount,
-			paint => d24,
-			POSX =>  px24,
-			POSY => py2
-		);
-
-
-dd25: display_34 
-		GENERIC MAP (
-			LW => lw,
-			DL => dl,
-			DH => dh)
-		Port map 
-		(
-			value  => "000100", --E
-			hcount => hcount,
-			vcount => vcount,
-			paint => d25,
-			POSX =>  px25,
-			POSY => py2
-		);
-
-dd26: display_34 
-
-		GENERIC MAP
-		(
-			LW => lw,
-			DL => dl,
-			DH => dh)
-		Port map 
-		(
-			value  => "010010", --S
-			hcount => hcount,
-			vcount => vcount,
-			paint => d26,
-			POSX =>  px26,
-			POSY => py2
-		);
-
-
-
-d1<= d10 or d11 or d12 or d13 or d14 or d15 or d16 or d17;
-d2<= d20 or d21 or d22 or d23 or d24 or d25 or d26;
-paint<=d1 or d2;
-
-
+			if    hcount>px10 and hcount<px11 then
+				posx<=px10;
+				value<="000110"; --G
+			elsif hcount>px11 and hcount<px12 then
+				posx<=px11;
+				value<="010001"; --R
+			elsif hcount>px12 and hcount<px13 then
+				posx<=px12;
+				value<="010100"; --U
+			elsif hcount>px13 and hcount<px14 then
+				posx<=px13;
+				value<="001111"; --P
+			elsif hcount>px14 and hcount<px15 then
+				posx<=px14;
+				value<="001110"; --O
+			elsif hcount>px15 and hcount<px16 then
+				posx<=px15;
+				value<="001101"; --N
+			elsif hcount>px16 and hcount<px17 then
+				posx<=px16;
+				value<="011010"; --0
+			elsif hcount>px17 and hcount<px18 then
+				posx<=px17;
+				value<="011011"; --1
+			else
+				posx<=px10;
+				value<="100100"; --error
+			end if;	
+		elsif vcount > py2 and vcount <py3 then
+			posy<=py2;
+			if    hcount>px20 and hcount<px21 then
+				posx<=px20;
+				value<="010101"; --V
+			elsif hcount>px21 and hcount<px22 then
+				posx<=px21;
+				value<="001000"; --I
+			elsif hcount>px22 and hcount<px23 then
+				posx<=px22;
+				value<="000100"; --E
+			elsif hcount>px23 and hcount<px24 then
+				posx<=px23;
+				value<="010001"; --R
+			elsif hcount>px24 and hcount<px25 then
+				posx<=px24;
+				value<="001101"; --N
+			elsif hcount>px25 and hcount<px26 then
+				posx<=px25;
+				value<="000100"; --E
+			elsif hcount>px26 and hcount<px27 then
+				posx<=px26;
+				value<="010010"; --S
+			else
+				posx<=px20;
+				value<="100100"; --error
+			end if;
+		else
+			posy<=py1;
+		end if;
+	end process;
 end Behavioral;

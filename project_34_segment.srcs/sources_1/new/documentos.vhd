@@ -32,12 +32,14 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity documentos is
-Port (
-	sel: in STD_LOGIC_VECTOR(3 downto 0);
-	hcount: in std_logic_vector(10 downto 0);
-	vcount: in std_logic_vector(10 downto 0);
-	paint: 	out std_logic
-	--se selecciona la posicion en la pantalla:
+	Port (
+		hcount: in std_logic_vector(10 downto 0);
+		vcount: in std_logic_vector(10 downto 0);
+		sel: in STD_LOGIC_VECTOR(3 downto 0);
+		value: out std_logic_vector(5 downto 0);
+		posx: out integer;
+		posy: out integer
+	--se selecciona la posicion en la pantalla: sel
 	--0000	Izquierda – Arriba
 --0110	Centrado arriba
 --1010	Derecha – Arriba
@@ -54,27 +56,6 @@ end documentos;
 architecture Behavioral of documentos is
 
 
-
-
-
-	component display_34 is
-	generic
-	(
-		lw:   in integer := 10;
-		dl:   in integer := 50;
-		dh:   in integer := 100
-	);
-	Port (
-		value:  in std_logic_vector(5 downto 0);
-		hcount: in std_logic_vector(10 downto 0);
-		vcount: in std_logic_vector(10 downto 0);
-		paint:  out std_logic;
-		posx: in integer;
-		posy: in integer
-			
-	);
-	end component;
-
 	constant dl:  integer := 50; --largo del caracter
 	constant dh:  integer := 100; --altura del caracter
 	constant lw:  integer := 5; 	--ancho de las lineas
@@ -85,402 +66,168 @@ architecture Behavioral of documentos is
 
 	constant CC1 : integer := 10; -- cantidad de letras para maya 
 	constant CC2 : integer := 10; --cantidad de letras para jaramillo
+	constant esl : integer := dl+lw; --espacio entre palabras
 
 	constant EVU : integer := cc1*(dh+esh); -- espacio vertical utilizado
 	constant EHU1: integer := cc1*(dl+esh) ; --Espacio horizontal total utilizado por la cedula 1
 	constant EHU2: integer := cc2*(dl+esh) ; --Espacio horizontal total utilizado por la cedula 2
-	signal px1,px10,px11,px12,px13,px14,px15,px16,px17,px18,px19: integer;
-	signal px2,px20,px21,px22,px23,px24,px25,px26,px27,px28,px29: integer; 
-	signal py,py2: integer;
-	signal c1,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19 : std_logic;
-	signal c2,c20,c21,c22,c23,c24,c25,c26,c27,c28,c29 : std_logic;
+begin
+checker: process(hcount,vcount,sel)
+variable px1,px10,px11,px12,px13,px14,px15,px16,px17,px18,px19,px101: integer:=0;
+variable px2,px20,px21,px22,px23,px24,px25,px26,px27,px28,px29,px201: integer:=0;
+variable py1,py2,py3: integer;
 begin
 
 
-px1 <= 	0	 			when sel = "0000" else --0000	Izquierda – Arriba
-		(th-ehu1)/2 	when sel = "0001" else --0110	Centrado arriba
-		th-ehu1			when sel = "0010" else --1010	Derecha – Arriba
-		0				when sel = "0011" else --1110	Izquierda – Centro
-		(th-ehu1)/2 	when sel = "0100" else --0010	Centrado – Centro
-		th-ehu1			when sel = "0101" else --0100	derecha – centro
-		0	 			when sel = "0110" else --1000	Izquierda – Abajo
-		(th-ehu1)/2 	when sel = "0111" else --1001	Centrado- Abajo
-		th-ehu1;							   --1101	Derecha –abajo
-		--1110	Una línea  diagonal desde extremo del lado izquierdo-abajo al extremos derecho-arriba del display  de 16 pixel de alto
-
-px2 <= 	0	 			when sel = "0000" else --0000	Izquierda – Arriba
-		(th-ehu2-1)/2 	when sel = "0001" else --0110	Centrado arriba
-		th-ehu2-1		when sel = "0010" else --1010	Derecha – Arriba
-		0				when sel = "0011" else --1110	Izquierda – Centro
-		(th-ehu2-1)/2 	when sel = "0100" else --0010	Centrado – Centro
-		th-ehu2-1		when sel = "0101" else --0100	derecha – centro
-		0	 			when sel = "0110" else --1000	Izquierda – Abajo
-		(th-ehu2-1)/2 	when sel = "0111" else --1001	Centrado- Abajo
-		th-ehu2-1;							   --1101	Derecha –abajo
-		--1110	Una línea  diagonal desde extremo del lado izquierdo-abajo al extremos derecho-arriba del display  de 16 pixel de alto
-
-py <= 	0	 			when sel = "0000" else --0000	Izquierda – Arriba
-		0 				when sel = "0001" else --0110	Centrado arriba
-		0				when sel = "0010" else --1010	Derecha – Arriba
-		(tv - EVU)/2	when sel = "0011" else --1110	Izquierda – Centro
-		(tv - EVU)/2 	when sel = "0100" else --0010	Centrado – Centro
-		(tv - EVU)/2	when sel = "0101" else --0100	derecha – centro
-		tv - EVU		when sel = "0110" else --1000	Izquierda – Abajo
-		tv - evu 		when sel = "0111" else --1001	Centrado- Abajo
-		tv - evu;							   --1101	Derecha –abajo
-											   --1110	Una línea  diagonal desde extremo del lado izquierdo-abajo al extremos derecho-arriba del display  de 16 pixel de alto
-px10<=px1;
-px11<=px1 + dl + esh;
-px12<=px1 + 2*(dl + esh);
-px13<=px1 + 3*(dl + esh);
-px14<=px1 + 4*(dl + esh);
-px15<=px1 + 5*(dl + esh);
-px16<=px1 + 6*(dl + esh);
-px17<=px1 + 7*(dl + esh);
-px18<=px1 + 8*(dl + esh);
-px19<=px1 + 4*(dl + esh);
-px20<=px2;
-
-py2<=py+dh+esh;
-
-ced10: display_34 
-		GENERIC MAP (
-			LW => lw,
-			DL => dl,
-			DH => dh
-			)
-		Port map 
-		(
-			value  => "011011",--1
-			hcount => hcount,
-			vcount => vcount,
-			paint => c10,
-			POSX => px10,
-			POSY => py
-		);
-
-ced11: display_34 
-		GENERIC MAP (
-			LW => lw,
-			DL => dl,
-			DH => dh
-			)
-		Port map 
-		(
-			value  => "011010",--0
-			hcount => hcount,
-			vcount => vcount,
-			paint => c11,
-			POSX => px11 ,
-			POSY => py
-		);
-		
-		
-
-ced12: display_34 
-
-		GENERIC MAP
-		(
-			LW => lw,
-			DL => dl,
-			DH => dh
-			)
-		Port map 
-		(
-			value  => "011011",--1
-			hcount => hcount,
-			vcount => vcount,
-			paint => c12,
-			POSX => px12,
-			POSY => py
-		);
-
-ced13: display_34 
-		GENERIC MAP
-		(
-			LW => lw,
-			DL => dl,
-			DH => dh
-			)
-		Port map 
-		(
-			value  => "100001",--7
-			hcount => hcount,
-			vcount => vcount,
-			paint => c13,
-			POSX =>  px13,
-			POSY => py
-		);
-
-ced14: display_34 
-		GENERIC MAP
-		(
-			LW => lw,
-			DL => dl,
-			DH => dh)
-		Port map 
-		(
-			value  => "011011",--1
-			hcount => hcount,
-			vcount => vcount,
-			paint => c14,
-			POSX => px14,
-			POSY => py
-		);
-
-ced15: display_34 
-		GENERIC MAP
-		(
-			LW => lw,
-			DL => dl,
-			DH => dh)
-		Port map 
-		(
-			value  => "011101",--3
-			hcount => hcount,
-			vcount => vcount,
-			paint => c15,
-			POSX => px15,
-			POSY => py
-		);
-
-ced16: display_34 
-		GENERIC MAP
-		(
-			LW => lw,
-			DL => dl,
-			DH => dh
-			)
-		Port map 
-		(
-			value  => "011011",--1
-			hcount => hcount,
-			vcount => vcount,
-			paint => c16,
-			POSX => px16,
-			POSY => py
-		);
 
 
-ced17: display_34 
-		GENERIC MAP
-		(
-			LW => lw,
-			DL => dl,
-			DH => dh)
-		Port map 
-		(
-			value  => "100011",--9
-			hcount => hcount,
-			vcount => vcount,
-			paint => c17,
-			POSX => px17,
-			POSY => py
-		);
 
-ced18: display_34 
-		GENERIC MAP
-		(
-			LW => lw,
-			DL => dl,
-			DH => dh)
-		Port map 
-		(
-			value  => "100000",--6
-			hcount => hcount,
-			vcount => vcount,
-			paint => c18,
-			POSX => px18,
-			POSY => py
-		);
+case sel is
+when "0000" =>	 			--0000	Izquierda – Arriba
 
-ced19: display_34 
-		GENERIC MAP
-		(
-			LW => lw,
-			DL => dl,
-			DH => dh
-			)
-		Port map 
-		(
-			value  => "100000",--6
-			hcount => hcount,
-			vcount => vcount,
-			paint => c19,
-			POSX => px19,
-			POSY => py
-		);
+	px1 := 	0;	 		
+	px2 := 	0;
+	py1 := 	0;
+when "0001" =>				 --0001	Centrado arriba
+	px1 := (th-ehu1-1)/2;
+	px2 := (th-ehu2-1)/2; 
+	py1 :=	0;
+when "0010"	=>				 --0010	Derecha – Arriba
+	px1 := th-ehu1-1;
+	px2 := th-ehu2-1;
+	py1 := 0;
+when "0011"	=>				 --0011	Izquierda – Centro		
+	px1 := 0;
+	px2 := 0;
+	py1 := (tv - EVU)/2;
+when "0100"	=>				 --0100 Centrado – Centro
+	px1 := (th-ehu1-1)/2 ;
+	px2 := (th-ehu2-1)/2;
+	py1 := (tv - EVU)/2;
+when "0101"	=>				 --0101 derecha – centro
+	px1 := th-ehu1-1;
+	px2 := th-ehu2-1;
+	py1 := (tv - EVU)/2;
+when "0110"	=>				--0110 Izquierda – Abajo
+	px1 := 0;
+	px2 := 0;
+	py1 := tv - EVU;
+when "0111"	=>	
+	px1 := (th-ehu1)/2;		--0111 Centrado- Abajo
+	px2 := (th-ehu2)/2 ;
+	py1 := tv - EVU;
+when others	=>				--1000 Derecha –abajo
+	px1 := th-ehu1;
+	px2 := th-ehu2;
+	py1 := tv - EVU;							   
+end case;
 
+py2:=py1+dh+esl;											   --1110	Una línea  diagonal desde extremo del lado izquierdo-abajo al extremos derecho-arriba del display  de 16 pixel de alto
+py3:=py1+2*dh;
 
-ced20: display_34 
-		GENERIC MAP (
-			LW => lw,
-			DL => dl,
-			DH => dh
-			)
-		Port map 
-		(
-			value  => "011011",--1
-			hcount => hcount,
-			vcount => vcount,
-			paint => c20,
-			POSX => px20,
-			POSY => py2
-		);
+px10:= px1;
+px11:= px1 + dl + esh;
+px12:= px1 + 2*(dl + esh);
+px13:= px1 + 3*(dl + esh);
+px14:= px1 + 4*(dl + esh);
+px15:= px1 + 5*(dl + esh);
+px16:= px1 + 6*(dl + esh);
+px17:= px1 + 7*(dl + esh);
+px18:= px1 + 8*(dl + esh);
+px19:= px1 + 9*(dl + esh);
+px101:=px1 + 10*(dl + esh);
 
+px20:= px2;
+px21:= px2 +dl + esh;
+px22:= px2 + 2*(dl + esh);
+px23:= px2 + 3*(dl + esh);
+px24:= px2 + 4*(dl + esh);
+px25:= px2 + 5*(dl + esh);
+px26:= px2 + 6*(dl + esh);
+px27:= px2 + 7*(dl + esh);
+px28:= px2 + 8*(dl + esh);
+px29:= px2 + 9*(dl + esh);
+px201:= px2 + 10*(dl + esh);
 
-px21<= px2 +dl + esh;
-ced21: display_34 
-		GENERIC MAP (
-			LW => lw,
-			DL => dl,
-			DH => dh
-			)
-		Port map 
-		(
-			value  => "011011",
-			hcount => hcount,
-			vcount => vcount,
-			paint => c21,
-			POSX =>px21,
-			POSY => py2
-		);
-px22<=px2 + 2*(dl + esh);
-ced22: display_34 
+if (vcount > py1) and (vcount <py2) then
+	posy<=py1;
 
-		GENERIC MAP
-		(
-			LW => lw,
-			DL => dl,
-			DH => dh
-			)
-		Port map 
-		(
-			value  => "011011",
-			hcount => hcount,
-			vcount => vcount,
-			paint => c22,
-			POSX => px22,
-			POSY => py2
-		);
-px23<= px2 + 3*(dl + esh);
-ced23: display_34 
-		GENERIC MAP
-		(
-			LW => lw,
-			DL => dl,
-			DH => dh)
-		Port map 
-		(
-			value  => "011011",
-			hcount => hcount,
-			vcount => vcount,
-			paint => c23,
-			POSX => px23,
-			POSY => py2
-		);
-px24<=px2 + 4*(dl + esh);
-ced24: display_34 
-		GENERIC MAP
-		(
-			LW => lw,
-			DL => dl,
-			DH => dh)
-		Port map 
-		(
-			value  => "011011",
-			hcount => hcount,
-			vcount => vcount,
-			paint => c24,
-			POSX => px24 ,
-			POSY => py2
-		);
+	if    hcount>px10 and hcount<px11 then
+		posx<=px10;
+		value<="011011"; --1
+	elsif hcount>px11 and hcount<px12 then
+		posx<=px11;
+		value<="011010"; --0
+	elsif hcount>px12 and hcount<px13 then
+		posx<=px12;
+		value<="011011"; --1
+	elsif hcount>px13 and hcount<px14 then
+		posx<=px13;
+		value<="100001"; --7
+	elsif hcount>px14 and hcount<px15 then
+		posx<=px14;
+		value<="000010"; --1
+	elsif hcount>px15 and hcount<px16 then
+		posx<=px15;
+		value<="011101"; --3
+	elsif hcount>px16 and hcount<px17 then
+		posx<=px16;
+		value<="011011"; --1
+	elsif hcount>px17 and hcount<px18 then
+		posx<=px17;
+		value<="100011"; --9
+	elsif hcount>px18 and hcount<px19 then
+		posx<=px18;
+		value<="100000"; --6
+	elsif  hcount>px19 and hcount<px101 then
+		posx<=px19;
+		value<="100000"; --6
+	else
+		posx<=px10;
+		value<="100100"; --error
+	end if;	
+elsif vcount > py2 and vcount <py3 then
+	posy<=py2;
+	if    hcount>px20 and hcount<px21 then
+		posx<=px20;
+		value<="011011"; --m
+	elsif hcount>px21 and hcount<px22 then
+		posx<=px21;
+		value<="011011"; --a
+	elsif hcount>px22 and hcount<px23 then
+		posx<=px22;
+		value<="010100"; --u
+	elsif hcount>px23 and hcount<px24 then
+		posx<=px23;
+		value<="011011"; --r
+	elsif hcount>px24 and hcount<px25 then
+		posx<=px24;
+		value<="011011"; --i
+	elsif hcount>px25 and hcount<px26 then
+		posx<=px25;
+		value<="011011"; --c
+	elsif hcount>px26 and hcount<px27 then
+		posx<=px26;
+		value<="011011"; --i
+	elsif hcount>px27 and hcount<px28 then
+		posx<=px27;
+		value<="011011"; --o
+	elsif hcount>px28 and hcount<px29 then
+		posx<=px28;
+		value<="011011"; --o
+	elsif hcount>px29 and hcount<px201 then
+		posx<=px29;
+		value<="011011"; --o
+	else
+		posx<=px20;
+		value<="100100"; --error
+	end if;
+else
+	posy<=py1;
+end if;
 
-px25<=px2 + 5*(dl + esh);
-ced25: display_34 
-		GENERIC MAP (
-			LW => lw,
-			DL => dl,
-			DH => dh)
-		Port map 
-		(
-			value  => "011011",
-			hcount => hcount,
-			vcount => vcount,
-			paint => c25,
-			POSX =>  px25,
-			POSY => py2
-		);
-px26<=px2 + 6*(dl + esh);
-ced26: display_34 
-
-		GENERIC MAP
-		(
-			LW => lw,
-			DL => dl,
-			DH => dh)
-		Port map 
-		(
-			value  => "011011",
-			hcount => hcount,
-			vcount => vcount,
-			paint => c26,
-			POSX =>  px26,
-			POSY => py2
-		);
-px27<=px2 + 7*(dl + esh);
-ced27: display_34 
-		GENERIC MAP
-		(
-			LW => lw,
-			DL => dl,
-			DH => dh)
-		Port map 
-		(
-			value  => "011011",
-			hcount => hcount,
-			vcount => vcount,
-			paint => c27,
-			POSX => px27 ,
-			POSY => py2
-		);
-px28<=px2 + 8*(dl + esh);
-ced28: display_34 
-		GENERIC MAP
-		(
-			LW => lw,
-			DL => dl,
-			DH => dh)
-		Port map 
-		(
-			value  => "011011",
-			hcount => hcount,
-			vcount => vcount,
-			paint => c28,
-			POSX => px28,
-			POSY => py
-		);
-px29<=px2 + 9*(dl + esh);
-ced29: display_34 
-		GENERIC MAP
-		(
-			LW => lw,
-			DL => dl,
-			DH => dh)
-		Port map 
-		(
-			value  => "011011",
-			hcount => hcount,
-			vcount => vcount,
-			paint => c29,
-			POSX => px29,
-			POSY => py
-		);
-
-
-c1<= c10 or c11 or c12 or c13 or c14 or c15 or c16 or c17 or c18 or c19;
-c2<= c20 or c21 or c22 or c23 or c24 or c25 or c26 or c27 or c28 or c29;
-paint<=c1 or c2;
+end process;
 
 
 end Behavioral;
+
