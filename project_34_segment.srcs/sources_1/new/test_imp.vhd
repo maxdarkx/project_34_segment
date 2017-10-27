@@ -93,7 +93,41 @@ architecture Behavioral of test_imp is
 	);
 	end component;
 
+	component documentos
+	Port 
+	(
+		hcount: in 	std_logic_vector(10 downto 0);
+		vcount: in 	std_logic_vector(10 downto 0);
+		sel: 	in 	STD_LOGIC_VECTOR(3 downto 0);
+		value:  out	std_logic_vector(5 downto 0);
+		posx: 	out integer;
+		posy: 	out integer
+	);
+	end component;
 
+	component apellidos
+	Port 
+	(
+		hcount: in 	std_logic_vector(10 downto 0);
+		vcount: in 	std_logic_vector(10 downto 0);
+		sel: 	in 	STD_LOGIC_VECTOR(3 downto 0);
+		value:  out	std_logic_vector(5 downto 0);
+		posx: 	out integer;
+		posy: 	out integer
+	);
+	end component;
+
+	component grupo
+	Port 
+	(
+		hcount: in 	std_logic_vector(10 downto 0);
+		vcount: in 	std_logic_vector(10 downto 0);
+		sel: 	in 	STD_LOGIC_VECTOR(3 downto 0);
+		value:  out	std_logic_vector(5 downto 0);
+		posx: 	out integer;
+		posy: 	out integer
+	);
+	end component;
 	
 	-- Declaramos seales
 	signal val,val1,val2,val3,val4: STD_LOGIC_VECTOR(5 downto 0):=(others=>'0') ;
@@ -137,74 +171,74 @@ begin
 	--	end if;
 	--end process;
 	
-	lista1:  nombres 
+	lista1:  apellidos 
 	port MAP(
-			hcount	=> hcount,
-			vcount	=> vcount,
-			sel 	=> ori,
-			value 	=> val1,
-			posx	=> px1,
-			posy	=> py1
-		); 
+		hcount	=> hcount,
+		vcount	=> vcount,
+		sel 	=> ori,
+		value 	=> val1,
+		posx	=> px1,
+		posy	=> py1
+	); 
 
-	--lista2:  nombres 
-	--		port MAP(
-	--		hcount	=> hcount,
-	--		vcount	=> vcount,
-	--		sel 	=> ori,
-	--		value 	=> val2,
-	--		posx	=> px2,
-	--		posy	=> py2
-	--	); 
+	lista2:  documentos 
+	port MAP(
+		hcount	=> hcount,
+		vcount	=> vcount,
+		sel 	=> ori,
+		value 	=> val2,
+		posx	=> px2,
+		posy	=> py2
+	); 
 	 
 	
-	--lista3:  nombres 			
-	--port MAP(
-	--		hcount	=> hcount,
-	--		vcount	=> vcount,
-	--		sel 	=> ori,
-	--		value 	=> val3,
-	--		posx	=> px3,
-	--		posy	=> py3
-	--	); 
+	lista3:  nombres 			
+	port MAP(
+		hcount	=> hcount,
+		vcount	=> vcount,
+		sel 	=> ori,
+		value 	=> val3,
+		posx	=> px3,
+		posy	=> py3
+	); 
 	 
 
-	--lista4:  nombres		
-	--port MAP(
-	--		hcount	=> hcount,
-	--		vcount	=> vcount,
-	--		sel 	=> ori,
-	--		value 	=> val4,
-	--		posx	=> px4,
-	--		posy	=> py4
-	--	); 
+	lista4:  grupo		
+	port MAP(
+		hcount	=> hcount,
+		vcount	=> vcount,
+		sel 	=> ori,
+		value 	=> val4,
+		posx	=> px4,
+		posy	=> py4
+	); 
 
 	mostrar: display_34
-		port map(
-			value  => val,--J
-			hcount => hcount,
-			vcount => vcount,
-			paint => paint0,
-			POSX => px,
-			POSY => py
-		);
+	port map(
+		value  => val,--J
+		hcount => hcount,
+		vcount => vcount,
+		paint => paint0,
+		POSX => px,
+		POSY => py
+	);
 
 
 	 
 	px <= 	px1 when sel= "00" else --APELLIDOS
-			--px2 when sel= "01" else --CEDULAS
-	  --      px3 when sel= "10" else --NOMBRES
-			--px4 when sel= "11" else --GRUPO
+			px2 when sel= "01" else --CEDULAS
+	        px3 when sel= "10" else --NOMBRES
+			px4 when sel= "11" else --GRUPO
 			0; --modificar con degradado process
 	py <= 	py1 when sel= "00" else --APELLIDOS
-			--py2 when sel= "01" else --CEDULAS
-	  --      py3 when sel= "10" else --NOMBRES
-			--py4 when sel= "11" else --GRUPO
+			py2 when sel= "01" else --CEDULAS
+	        py3 when sel= "10" else --NOMBRES
+			py4 when sel= "11" else --GRUPO
 			0; --modificar con degradado process
 	val <= 	val1 when sel= "00" else --APELLIDOS
-			--val2 when sel= "01" else --CEDULAS
-	  --      val3 when sel= "10" else --NOMBRES
-			--val4 when sel= "11" else --GRUPO
+			val2 when sel= "01" else --CEDULAS
+	        val3 when sel= "10" else --NOMBRES
+			val4 when sel= "11" else --GRUPO
 			"100100"; --modificar con degradado process
 
 
