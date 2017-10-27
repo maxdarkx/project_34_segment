@@ -21,7 +21,8 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
 --use IEEE.NUMERIC_STD.ALL;
@@ -52,21 +53,20 @@ architecture Behavioral of grupo is
 	constant th: integer := 640;
 	constant tv: integer := 480;
 
-	constant CC1 : integer := 8; -- cantidad de letras para primera fila (grupo N01=8) 
+	constant CC1 : integer := 9; -- cantidad de letras para primera fila (grupo N01=8) 
 	constant CC2 : integer := 7; --cantidad de letras para segunda fila (viernes=7)
 	constant esl : integer := dl+lw; --espacio entre palabras
 
-	constant EVU : integer := cc1*(dh+esh); -- espacio vertical utilizado
+	constant EVU : integer := 2*(dh+esh); -- espacio vertical utilizado
 	constant EHU1: integer := cc1*(dl+esh) ; --Espacio horizontal total utilizado fila 1
 	constant EHU2: integer := cc2*(dl+esh) ; --Espacio horizontal total utilizado fila 2
-begin
 begin
 
 
 	checker: process(hcount,vcount,sel)
-	variable px1,px10,px11,px12,px13,px14,px15,px16,px17,px18,px19,px101: integer:=0;
-	variable px2,px20,px21,px22,px23,px24,px25,px26,px27,px28,px29,px201: integer:=0;
-	variable py1,py2,py3: integer;
+		variable px1,px10,px11,px12,px13,px14,px15,px16,px17,px18,px19,px101: integer:=0;
+		variable px2,px20,px21,px22,px23,px24,px25,px26,px27,px28,px29,px201: integer:=0;
+		variable py1,py2,py3: integer;
 	begin
 
 		case sel is
@@ -109,7 +109,7 @@ begin
 			py1 := tv - EVU;							   
 		end case;
 
-		py2:=py1+dh+esl;											   --1110	Una línea  diagonal desde extremo del lado izquierdo-abajo al extremos derecho-arriba del display  de 16 pixel de alto
+		py2:=py1+dh;											   --1110	Una línea  diagonal desde extremo del lado izquierdo-abajo al extremos derecho-arriba del display  de 16 pixel de alto
 		py3:=py1+2*dh;
 
 		px10:= px1;
@@ -117,7 +117,7 @@ begin
 		px12:= px1 + 2*(dl + esh);
 		px13:= px1 + 3*(dl + esh);
 		px14:= px1 + 4*(dl + esh);
-		px15:= px1 + 5*(dl + esh);
+		px15:= px1 + 6*(dl + esh);
 		px16:= px1 + 7*(dl + esh);
 		px17:= px1 + 8*(dl + esh);
 		px101:=px1 + 9*(dl + esh);
@@ -156,7 +156,7 @@ begin
 			elsif hcount>px16 and hcount<px17 then
 				posx<=px16;
 				value<="011010"; --0
-			elsif hcount>px17 and hcount<px18 then
+			elsif hcount>px17 and hcount<px101 then
 				posx<=px17;
 				value<="011011"; --1
 			else
@@ -183,7 +183,7 @@ begin
 			elsif hcount>px25 and hcount<px26 then
 				posx<=px25;
 				value<="000100"; --E
-			elsif hcount>px26 and hcount<px27 then
+			elsif hcount>px26 and hcount<px201 then
 				posx<=px26;
 				value<="010010"; --S
 			else

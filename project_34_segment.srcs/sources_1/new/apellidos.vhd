@@ -4,7 +4,7 @@
 -- 
 -- Create Date: 19.10.2017 08:07:25
 -- Design Name: 
--- Module Name: apellidos - Behavioral
+-- Module Name: nombres - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -14,13 +14,15 @@
 -- 
 -- Revision:
 -- Revision 0.01 - File Created
--- Additional Comments:
+-- ANNitional Comments:
 -- 
 ----------------------------------------------------------------------------------
 
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -31,7 +33,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity apellidos is
+entity apellidos is --JUAN CARLOS=10/ MAURICIO=8
 port(
 	hcount: in 	std_logic_vector(10 downto 0);
 	vcount: in 	std_logic_vector(10 downto 0);
@@ -40,20 +42,10 @@ port(
 	posx: 	out integer;
 	posy: 	out integer
 	);
-	--se selecciona la posicion en la pantalla:
-	--0000	Izquierda – Arriba
---0110	Centrado arriba
---1010	Derecha – Arriba
---1110	Izquierda – Centro
---0010	Centrado – Centro
---0100	derecha – centro
---1000	Izquierda – Abajo
---1001	Centrado- Abajo
---1101	Derecha –abajo
---1110	Una línea  diagonal desde extremo del lado izquierdo-abajo al extremos derecho-arriba del display  de 16 pixel de alto
 end apellidos;
 
 architecture Behavioral of apellidos is
+
 	constant dl:  integer := 50; --largo del caracter
 	constant dh:  integer := 100; --altura del caracter
 	constant lw:  integer := 5; 	--ancho de las lineas
@@ -62,20 +54,24 @@ architecture Behavioral of apellidos is
 	constant th: integer := 640;
 	constant tv: integer := 480;
 
-	constant CC1 : integer := 4; -- cantidad de letras para maya 
-	constant CC2 : integer := 8; --cantidad de letras para jaramillo
-	constant esl :integer := dl+lw;
+	constant CC1 : integer := 11; -- cantidad de letras para primera fila (JUAN_CARLOS=11) 
+	constant CC2 : integer := 8; --cantidad de letras para segunda fila (MAURICIO=8)
+	constant esl : integer := dl+lw; --espacio entre palabras
 
-	constant EVU : integer :=  2*(dh+esh); -- espacio vertical utilizado
-	constant EHU1: integer := cc1*(dl+esh) ; --Espacio horizontal total utilizado por el apellido maya
-	constant EHU2: integer := CC2*(dl+esh) ; --Espacio horizontal total utilizado por el apellido jaramillo
+	constant EVU : integer := 2*(dh+esh); -- espacio vertical utilizado
+	constant EHU1: integer := cc1*(dl+esh) ; --Espacio horizontal total utilizado fila 1
+	constant EHU2: integer := cc2*(dl+esh) ; --Espacio horizontal total utilizado fila 2
+ 
+	
 begin
+
 
 	checker: process(hcount,vcount,sel)
 		variable px1,px10,px11,px12,px13,px14,px15,px16,px17,px18,px19,px101: integer:=0;
 		variable px2,px20,px21,px22,px23,px24,px25,px26,px27,px28,px29,px201: integer:=0;
 		variable py1,py2,py3: integer;
 	begin
+
 		case sel is
 		when "0000" =>	 			--0000	Izquierda – Arriba
 
@@ -116,14 +112,14 @@ begin
 			py1 := tv - EVU;							   
 		end case;
 
-		py2:=py1+dh+esl;											   --1110	Una línea  diagonal desde extremo del lado izquierdo-abajo al extremos derecho-arriba del display  de 16 pixel de alto
+		py2:=py1+dh;											   --1110	Una línea  diagonal desde extremo del lado izquierdo-abajo al extremos derecho-arriba del display  de 16 pixel de alto
 		py3:=py1+2*dh;
 
 		px10:= px1;
 		px11:= px1 + dl + esh;
 		px12:= px1 + 2*(dl + esh);
 		px13:= px1 + 3*(dl + esh);
-		px101:=px1 + 4*(dl + esh);
+		px101:=px1 + 11*(dl + esh);
 
 		px20:= px2;
 		px21:= px2 +dl + esh;
@@ -148,7 +144,7 @@ begin
 			elsif hcount>px12 and hcount<px13 then
 				posx<=px12;
 				value<="011000"; --Y
-			elsif hcount>px13 and hcount<px14 then
+			elsif hcount>px13 and hcount<px101 then
 				posx<=px13;
 				value<="000000"; --A
 			else
@@ -159,31 +155,32 @@ begin
 			posy<=py2;
 			if    hcount>px20 and hcount<px21 then
 				posx<=px20;
-				value<="001001"; --J
+				value<="001001"; --j
 			elsif hcount>px21 and hcount<px22 then
 				posx<=px21;
-				value<="000000"; --A
+				value<="000000"; --a
 			elsif hcount>px22 and hcount<px23 then
 				posx<=px22;
-				value<="010001"; --R
+				value<="010001"; --r
 			elsif hcount>px23 and hcount<px24 then
 				posx<=px23;
-				value<="000000"; --A
+				value<="000000"; --a
 			elsif hcount>px24 and hcount<px25 then
 				posx<=px24;
-				value<="001100"; --M
+				value<="001100"; --m
 			elsif hcount>px25 and hcount<px26 then
 				posx<=px25;
-				value<="001000"; --I
+				value<="001000"; --i
 			elsif hcount>px26 and hcount<px27 then
 				posx<=px26;
-				value<="001011"; --L
-			elsif hcount>px27 and hcount<px201 then
+				value<="001011"; --l
+			elsif hcount>px27 and hcount<px28 then
 				posx<=px27;
-				value<="001011"; --L
+				value<="001011"; --l
 			elsif hcount>px28 and hcount<px201 then
 				posx<=px28;
-				value<="001110"; --O
+				value<="001110"; --o
+			
 			else
 				posx<=px20;
 				value<="100100"; --error
@@ -191,7 +188,5 @@ begin
 		else
 			posy<=py1;
 		end if;
-
 	end process;
-
 end Behavioral;

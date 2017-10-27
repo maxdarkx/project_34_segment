@@ -21,7 +21,8 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
 --use IEEE.NUMERIC_STD.ALL;
@@ -68,7 +69,7 @@ architecture Behavioral of documentos is
 	constant CC2 : integer := 10; --cantidad de letras para jaramillo
 	constant esl : integer := dl+lw; --espacio entre palabras
 
-	constant EVU : integer := cc1*(dh+esh); -- espacio vertical utilizado
+	constant EVU : integer := 2*(dh+esh); -- espacio vertical utilizado
 	constant EHU1: integer := cc1*(dl+esh) ; --Espacio horizontal total utilizado por la cedula 1
 	constant EHU2: integer := cc2*(dl+esh) ; --Espacio horizontal total utilizado por la cedula 2
 begin
@@ -122,7 +123,7 @@ when others	=>				--1000 Derecha –abajo
 	py1 := tv - EVU;							   
 end case;
 
-py2:=py1+dh+esl;											   --1110	Una línea  diagonal desde extremo del lado izquierdo-abajo al extremos derecho-arriba del display  de 16 pixel de alto
+py2:=py1+dh;											   --1110	Una línea  diagonal desde extremo del lado izquierdo-abajo al extremos derecho-arriba del display  de 16 pixel de alto
 py3:=py1+2*dh;
 
 px10:= px1;
@@ -166,7 +167,7 @@ if (vcount > py1) and (vcount <py2) then
 		value<="100001"; --7
 	elsif hcount>px14 and hcount<px15 then
 		posx<=px14;
-		value<="000010"; --1
+		value<="011011"; --1
 	elsif hcount>px15 and hcount<px16 then
 		posx<=px15;
 		value<="011101"; --3
@@ -190,34 +191,34 @@ elsif vcount > py2 and vcount <py3 then
 	posy<=py2;
 	if    hcount>px20 and hcount<px21 then
 		posx<=px20;
-		value<="011011"; --m
+		value<="011011"; --1
 	elsif hcount>px21 and hcount<px22 then
 		posx<=px21;
-		value<="011011"; --a
+		value<="011010"; --0
 	elsif hcount>px22 and hcount<px23 then
 		posx<=px22;
-		value<="010100"; --u
+		value<="011101"; --3
 	elsif hcount>px23 and hcount<px24 then
 		posx<=px23;
-		value<="011011"; --r
+		value<="100000"; --6
 	elsif hcount>px24 and hcount<px25 then
 		posx<=px24;
-		value<="011011"; --i
+		value<="100000"; --6
 	elsif hcount>px25 and hcount<px26 then
 		posx<=px25;
-		value<="011011"; --c
+		value<="100000"; --6
 	elsif hcount>px26 and hcount<px27 then
 		posx<=px26;
-		value<="011011"; --i
+		value<="011100"; --2
 	elsif hcount>px27 and hcount<px28 then
 		posx<=px27;
-		value<="011011"; --o
+		value<="011010"; --0
 	elsif hcount>px28 and hcount<px29 then
 		posx<=px28;
-		value<="011011"; --o
+		value<="011011"; --1
 	elsif hcount>px29 and hcount<px201 then
 		posx<=px29;
-		value<="011011"; --o
+		value<="011100"; --2
 	else
 		posx<=px20;
 		value<="100100"; --error

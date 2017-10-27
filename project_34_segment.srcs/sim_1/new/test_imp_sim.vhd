@@ -110,14 +110,14 @@ end process;
 process(hcount)
 	variable texto1: line;
     variable color1,color2,color3: integer;
-    variable temp: std_logic_vector (3 downto 0);
+    variable temp: std_logic_vector (11 downto 0);
     file solucion: text;
     variable c: std_logic:='0';
 begin
 	file_open(solucion, "resultados.m",  append_mode);
-	temp:= rgb_out(3) & rgb_out(2) & rgb_out(1) & rgb_out(0);
+	temp:= rgb_out;
 	color1:= conv_integer(temp);
-	temp:= rgb_out(7) & rgb_out(6) & rgb_out(5) & rgb_out(4);
+	--temp:= rgb_out(7) & rgb_out(6) & rgb_out(5) & rgb_out(4);
 	--color2:= conv_integer(temp);
 	--temp:= rgb_out(11) & rgb_out(10) & rgb_out(9) & rgb_out(8);
 	--color3:= conv_integer(temp);

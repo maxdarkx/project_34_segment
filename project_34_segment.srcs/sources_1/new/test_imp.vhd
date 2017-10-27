@@ -147,7 +147,7 @@ architecture Behavioral of test_imp is
 	signal count_1hz: INTEGER := 0;
 	signal px,px1,px2,px3,px4: integer:=0;
 	signal py,py1,py2,py3,py4: integer:=0;
-
+	signal cont: std_logic_vector(3 downto 0):="0000";
 
 begin
 
@@ -192,7 +192,7 @@ begin
 	); 
 	 
 	
-	lista3:  nombres 			
+	lista3:  nombres			
 	port MAP(
 		hcount	=> hcount,
 		vcount	=> vcount,
@@ -242,8 +242,69 @@ begin
 			"100100"; --modificar con degradado process
 
 
+color: process(sel,paint0,hcount)
+begin
+	if sel= "00" and paint0='1' then --APELLIDOS
+		rgb_aux<="111100000000";
+	elsif sel= "01" and paint0='1' then --CEDULAS
+		rgb_aux<="000011110000";
+	elsif sel= "10" and paint0='1' then --NOMBRES
+		rgb_aux<="000000001111";
+	elsif sel= "11"  and paint0='1' then --GRUPO
+		rgb_aux<="100010001000";
+	else
+		if sel= "00" then --APELLIDOS
+			--rgb_aux<="111100000000";
+			if(cont<15 and hcount<640) then
+				cont<=cont+'1';
+			else
+				cont<="0000";
+			end if;
+			rgb_aux(11)<=cont(3);
+			rgb_aux(10)<=cont(2);
+			rgb_aux(9)<=cont(1);
+			rgb_aux(8)<=cont(0);
+		elsif sel= "01" then --CEDULAS
+			--rgb_aux<="000011110000";
+			if(cont<15) then
+				cont<=cont+'1';
+			else
+				cont<="0000";
+			end if;
+			rgb_aux(7)<=cont(3);
+			rgb_aux(6)<=cont(2);
+			rgb_aux(5)<=cont(1);
+			rgb_aux(4)<=cont(0);
+		elsif sel= "10" then --NOMBRES
+			--rgb_aux<="000000001111";
+			if(cont<15) then
+				cont<=cont+'1';
+			else
+				cont<="0000";
+			end if;
+			rgb_aux(3)<=cont(3);
+			rgb_aux(2)<=cont(2);
+			rgb_aux(1)<=cont(1);
+			rgb_aux(0)<=cont(0);
+		elsif sel= "11" then --GRUPO
+			--rgb_aux<="100010001000";
+			if(cont<15) then
+				cont<=cont+'1';
+			else
+				cont<="0000";
+			end if;
+			rgb_aux(11)<=cont(3);
+			rgb_aux(7)<=cont(2);
+			rgb_aux(3)<=cont(1);
+			
+			
+		end if;
+	end if;
+end process;
+
+
 	
-	rgb_aux <= paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0;
+	--rgb_aux <= paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0;
 
 	--Inst_vga_ctrl_640x480_60Hz: vga_ctrl_640x480_60Hz PORT MAP(
 	--	rst => RST,
