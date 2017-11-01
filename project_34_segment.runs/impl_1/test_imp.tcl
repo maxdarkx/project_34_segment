@@ -47,15 +47,16 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
+  set_param xicom.use_bs_reader 1
   create_project -in_memory -part xc7a35tcpg236-1
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
-  set_property webtalk.parent_dir {C:/Users/Juan Carlos/Xilinx/project 34 segment/project_34_segment/project_34_segment.cache/wt} [current_project]
-  set_property parent.project_path {C:/Users/Juan Carlos/Xilinx/project 34 segment/project_34_segment/project_34_segment.xpr} [current_project]
-  set_property ip_output_repo {{C:/Users/Juan Carlos/Xilinx/project 34 segment/project_34_segment/project_34_segment.cache/ip}} [current_project]
+  set_property webtalk.parent_dir {C:/Users/Juan Carlos/Documents/Vivado/project_34_segment/project_34_segment.cache/wt} [current_project]
+  set_property parent.project_path {C:/Users/Juan Carlos/Documents/Vivado/project_34_segment/project_34_segment.xpr} [current_project]
+  set_property ip_output_repo {{C:/Users/Juan Carlos/Documents/Vivado/project_34_segment/project_34_segment.cache/ip}} [current_project]
   set_property ip_cache_permissions {read write} [current_project]
-  add_files -quiet {{C:/Users/Juan Carlos/Xilinx/project 34 segment/project_34_segment/project_34_segment.runs/synth_1/test_imp.dcp}}
-  read_xdc {{C:/Users/Juan Carlos/Xilinx/project 34 segment/project_34_segment/project_34_segment.srcs/sources_1/new/Basys3_Master.xdc}}
+  add_files -quiet {{C:/Users/Juan Carlos/Documents/Vivado/project_34_segment/project_34_segment.runs/synth_1/test_imp.dcp}}
+  read_xdc {{C:/Users/Juan Carlos/Documents/Vivado/project_34_segment/project_34_segment.srcs/sources_1/new/Basys3_Master.xdc}}
   link_design -top test_imp -part xc7a35tcpg236-1
   close_msg_db -file init_design.pb
 } RESULT]
@@ -124,6 +125,24 @@ if {$rc} {
   return -code error $RESULT
 } else {
   end_step route_design
+  unset ACTIVE_STEP 
+}
+
+start_step write_bitstream
+set ACTIVE_STEP write_bitstream
+set rc [catch {
+  create_msg_db write_bitstream.pb
+  catch { write_mem_info -force test_imp.mmi }
+  write_bitstream -force test_imp.bit 
+  catch {write_debug_probes -no_partial_ltxfile -quiet -force debug_nets}
+  catch {file copy -force debug_nets.ltx test_imp.ltx}
+  close_msg_db -file write_bitstream.pb
+} RESULT]
+if {$rc} {
+  step_failed write_bitstream
+  return -code error $RESULT
+} else {
+  end_step write_bitstream
   unset ACTIVE_STEP 
 }
 

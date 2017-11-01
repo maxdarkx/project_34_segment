@@ -1,8 +1,8 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version     : Vivado v.2017.2.1 (win64) Build 1957588 Wed Aug  9 16:32:24 MDT 2017
-| Date             : Sat Oct 21 21:43:48 2017
-| Host             : JORGE-052 running 64-bit major release  (build 9200)
+| Tool Version     : Vivado v.2017.2 (win64) Build 1909853 Thu Jun 15 18:39:09 MDT 2017
+| Date             : Fri Oct 27 18:46:47 2017
+| Host             : DESKTOP-FLLH9B9 running 64-bit major release  (build 9200)
 | Command          : report_power -file test_imp_power_routed.rpt -pb test_imp_power_summary_routed.pb -rpx test_imp_power_routed.rpx
 | Design           : test_imp
 | Device           : xc7a35tcpg236-1
@@ -30,12 +30,12 @@ Table of Contents
 ----------
 
 +--------------------------+-------+
-| Total On-Chip Power (W)  | 0.530 |
-| Dynamic (W)              | 0.458 |
+| Total On-Chip Power (W)  | 0.557 |
+| Dynamic (W)              | 0.485 |
 | Device Static (W)        | 0.073 |
 | Effective TJA (C/W)      | 5.0   |
-| Max Ambient (C)          | 82.3  |
-| Junction Temperature (C) | 27.7  |
+| Max Ambient (C)          | 82.2  |
+| Junction Temperature (C) | 27.8  |
 | Confidence Level         | Low   |
 | Setting File             | ---   |
 | Simulation Activity File | ---   |
@@ -50,15 +50,17 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |    <0.001 |        3 |       --- |             --- |
-| Slice Logic    |     0.237 |    19673 |       --- |             --- |
-|   LUT as Logic |     0.210 |    14588 |     20800 |           70.13 |
-|   CARRY4       |     0.027 |     4008 |      8150 |           49.18 |
-|   Register     |    <0.001 |       54 |     41600 |            0.13 |
-|   Others       |     0.000 |       12 |       --- |             --- |
-| Signals        |     0.219 |    17412 |       --- |             --- |
-| I/O            |     0.001 |       20 |       106 |           18.87 |
+| Slice Logic    |     0.248 |    21202 |       --- |             --- |
+|   LUT as Logic |     0.220 |    15399 |     20800 |           74.03 |
+|   CARRY4       |     0.027 |     4211 |      8150 |           51.67 |
+|   Register     |    <0.001 |      119 |     41600 |            0.29 |
+|   F7/F8 Muxes  |    <0.001 |        6 |     32600 |            0.02 |
+|   BUFG         |    <0.001 |        1 |        32 |            3.13 |
+|   Others       |     0.000 |      231 |       --- |             --- |
+| Signals        |     0.236 |    18105 |       --- |             --- |
+| I/O            |    <0.001 |       22 |       106 |           20.75 |
 | Static Power   |     0.073 |          |           |                 |
-| Total          |     0.530 |          |           |                 |
+| Total          |     0.557 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -68,7 +70,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.467 |       0.456 |      0.010 |
+| Vccint    |       1.000 |     0.494 |       0.484 |      0.010 |
 | Vccaux    |       1.800 |     0.013 |       0.000 |      0.013 |
 | Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -137,9 +139,13 @@ Table of Contents
 +------------------------------+-----------+
 | Name                         | Power (W) |
 +------------------------------+-----------+
-| test_imp                     |     0.458 |
-|   Inst_vga_ctrl_640x480_60Hz |     0.024 |
-|   lista1                     |     0.420 |
+| test_imp                     |     0.485 |
+|   Inst_vga_ctrl_640x480_60Hz |     0.023 |
+|   lista1                     |     0.007 |
+|   lista2                     |    <0.001 |
+|   lista3                     |    <0.001 |
+|   lista4                     |     0.406 |
+|   mostrar                    |    <0.001 |
 +------------------------------+-----------+
 
 

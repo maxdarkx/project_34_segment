@@ -1,8 +1,8 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2017.2.1 (win64) Build 1957588 Wed Aug  9 16:32:24 MDT 2017
-| Date         : Sat Oct 21 21:43:45 2017
-| Host         : JORGE-052 running 64-bit major release  (build 9200)
+| Tool Version : Vivado v.2017.2 (win64) Build 1909853 Thu Jun 15 18:39:09 MDT 2017
+| Date         : Fri Oct 27 18:46:39 2017
+| Host         : DESKTOP-FLLH9B9 running 64-bit major release  (build 9200)
 | Command      : report_methodology -file test_imp_methodology_drc_routed.rpt -rpx test_imp_methodology_drc_routed.rpx
 | Design       : test_imp
 | Device       : xc7a35tcpg236-1
@@ -23,12 +23,12 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 53
+             Violations found: 118
 +-----------+----------+-----------------------------+------------+
 | Rule      | Severity | Description                 | Violations |
 +-----------+----------+-----------------------------+------------+
-| TIMING-17 | Warning  | Non-clocked sequential cell | 37         |
-| TIMING-20 | Warning  | Non-clocked latch           | 16         |
+| TIMING-17 | Warning  | Non-clocked sequential cell | 54         |
+| TIMING-20 | Warning  | Non-clocked latch           | 64         |
 +-----------+----------+-----------------------------+------------+
 
 2. REPORT DETAILS
@@ -60,160 +60,245 @@ Related violations: <none>
 
 TIMING-17#6 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[1]/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[10]_rep/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#7 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[2]/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[10]_rep__0/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#8 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[3]/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#9 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[4]/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#10 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[5]/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[2]_rep/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#11 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[6]/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[2]_rep__0/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#12 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[7]/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#13 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[8]/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[3]_rep/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#14 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[9]/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[3]_rep__0/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#15 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/rgb_out_reg[11]/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#16 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/rgb_out_reg[11]_lopt_replica/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[4]_rep/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#17 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/rgb_out_reg[11]_lopt_replica_10/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[4]_rep__0/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#18 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/rgb_out_reg[11]_lopt_replica_11/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#19 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/rgb_out_reg[11]_lopt_replica_2/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[5]_rep/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#20 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/rgb_out_reg[11]_lopt_replica_3/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[5]_rep__0/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#21 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/rgb_out_reg[11]_lopt_replica_4/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#22 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/rgb_out_reg[11]_lopt_replica_5/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[6]_rep/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#23 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/rgb_out_reg[11]_lopt_replica_6/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[6]_rep__0/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#24 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/rgb_out_reg[11]_lopt_replica_7/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#25 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/rgb_out_reg[11]_lopt_replica_8/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[7]_rep/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#26 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/rgb_out_reg[11]_lopt_replica_9/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[7]_rep__0/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#27 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/vcounter_reg[0]/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[8]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#28 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/vcounter_reg[10]/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[8]_rep/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#29 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/vcounter_reg[1]/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[9]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#30 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/vcounter_reg[2]/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[9]_rep/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#31 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/vcounter_reg[3]/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/hcounter_reg[9]_rep__0/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#32 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/vcounter_reg[4]/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/rgb_out_reg[11]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#33 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/vcounter_reg[5]/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/rgb_out_reg[11]_lopt_replica/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#34 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/vcounter_reg[6]/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/rgb_out_reg[11]_lopt_replica_10/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#35 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/vcounter_reg[7]/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/rgb_out_reg[11]_lopt_replica_11/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#36 Warning
 Non-clocked sequential cell  
-The clock pin Inst_vga_ctrl_640x480_60Hz/vcounter_reg[8]/C is not reached by a timing clock
+The clock pin Inst_vga_ctrl_640x480_60Hz/rgb_out_reg[11]_lopt_replica_2/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#37 Warning
+Non-clocked sequential cell  
+The clock pin Inst_vga_ctrl_640x480_60Hz/rgb_out_reg[11]_lopt_replica_3/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#38 Warning
+Non-clocked sequential cell  
+The clock pin Inst_vga_ctrl_640x480_60Hz/rgb_out_reg[11]_lopt_replica_4/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#39 Warning
+Non-clocked sequential cell  
+The clock pin Inst_vga_ctrl_640x480_60Hz/rgb_out_reg[11]_lopt_replica_5/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#40 Warning
+Non-clocked sequential cell  
+The clock pin Inst_vga_ctrl_640x480_60Hz/rgb_out_reg[11]_lopt_replica_6/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#41 Warning
+Non-clocked sequential cell  
+The clock pin Inst_vga_ctrl_640x480_60Hz/rgb_out_reg[11]_lopt_replica_7/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#42 Warning
+Non-clocked sequential cell  
+The clock pin Inst_vga_ctrl_640x480_60Hz/rgb_out_reg[11]_lopt_replica_8/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#43 Warning
+Non-clocked sequential cell  
+The clock pin Inst_vga_ctrl_640x480_60Hz/rgb_out_reg[11]_lopt_replica_9/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#44 Warning
+Non-clocked sequential cell  
+The clock pin Inst_vga_ctrl_640x480_60Hz/vcounter_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#45 Warning
+Non-clocked sequential cell  
+The clock pin Inst_vga_ctrl_640x480_60Hz/vcounter_reg[10]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#46 Warning
+Non-clocked sequential cell  
+The clock pin Inst_vga_ctrl_640x480_60Hz/vcounter_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#47 Warning
+Non-clocked sequential cell  
+The clock pin Inst_vga_ctrl_640x480_60Hz/vcounter_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#48 Warning
+Non-clocked sequential cell  
+The clock pin Inst_vga_ctrl_640x480_60Hz/vcounter_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#49 Warning
+Non-clocked sequential cell  
+The clock pin Inst_vga_ctrl_640x480_60Hz/vcounter_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#50 Warning
+Non-clocked sequential cell  
+The clock pin Inst_vga_ctrl_640x480_60Hz/vcounter_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#51 Warning
+Non-clocked sequential cell  
+The clock pin Inst_vga_ctrl_640x480_60Hz/vcounter_reg[6]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#52 Warning
+Non-clocked sequential cell  
+The clock pin Inst_vga_ctrl_640x480_60Hz/vcounter_reg[7]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#53 Warning
+Non-clocked sequential cell  
+The clock pin Inst_vga_ctrl_640x480_60Hz/vcounter_reg[8]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#54 Warning
 Non-clocked sequential cell  
 The clock pin Inst_vga_ctrl_640x480_60Hz/vcounter_reg[9]/C is not reached by a timing clock
 Related violations: <none>
@@ -235,67 +320,307 @@ Related violations: <none>
 
 TIMING-20#4 Warning
 Non-clocked latch  
-The latch lista1/posx_reg[3] cannot be properly analyzed as its control pin lista1/posx_reg[3]/G is not reached by a timing clock
+The latch lista1/posx_reg[31] cannot be properly analyzed as its control pin lista1/posx_reg[31]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#5 Warning
 Non-clocked latch  
-The latch lista1/posx_reg[4] cannot be properly analyzed as its control pin lista1/posx_reg[4]/G is not reached by a timing clock
+The latch lista1/posx_reg[3] cannot be properly analyzed as its control pin lista1/posx_reg[3]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#6 Warning
 Non-clocked latch  
-The latch lista1/posx_reg[5] cannot be properly analyzed as its control pin lista1/posx_reg[5]/G is not reached by a timing clock
+The latch lista1/posx_reg[4] cannot be properly analyzed as its control pin lista1/posx_reg[4]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#7 Warning
 Non-clocked latch  
-The latch lista1/posx_reg[6] cannot be properly analyzed as its control pin lista1/posx_reg[6]/G is not reached by a timing clock
+The latch lista1/posx_reg[5] cannot be properly analyzed as its control pin lista1/posx_reg[5]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#8 Warning
 Non-clocked latch  
-The latch lista1/posx_reg[7] cannot be properly analyzed as its control pin lista1/posx_reg[7]/G is not reached by a timing clock
+The latch lista1/posx_reg[6] cannot be properly analyzed as its control pin lista1/posx_reg[6]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#9 Warning
 Non-clocked latch  
-The latch lista1/posx_reg[8] cannot be properly analyzed as its control pin lista1/posx_reg[8]/G is not reached by a timing clock
+The latch lista1/posx_reg[7] cannot be properly analyzed as its control pin lista1/posx_reg[7]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#10 Warning
 Non-clocked latch  
-The latch lista1/posx_reg[9] cannot be properly analyzed as its control pin lista1/posx_reg[9]/G is not reached by a timing clock
+The latch lista1/posx_reg[8] cannot be properly analyzed as its control pin lista1/posx_reg[8]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#11 Warning
 Non-clocked latch  
-The latch lista1/value_reg[0] cannot be properly analyzed as its control pin lista1/value_reg[0]/G is not reached by a timing clock
+The latch lista1/posx_reg[9] cannot be properly analyzed as its control pin lista1/posx_reg[9]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#12 Warning
 Non-clocked latch  
-The latch lista1/value_reg[1] cannot be properly analyzed as its control pin lista1/value_reg[1]/G is not reached by a timing clock
+The latch lista1/value_reg[0] cannot be properly analyzed as its control pin lista1/value_reg[0]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#13 Warning
 Non-clocked latch  
-The latch lista1/value_reg[2] cannot be properly analyzed as its control pin lista1/value_reg[2]/G is not reached by a timing clock
+The latch lista1/value_reg[1] cannot be properly analyzed as its control pin lista1/value_reg[1]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#14 Warning
 Non-clocked latch  
-The latch lista1/value_reg[3] cannot be properly analyzed as its control pin lista1/value_reg[3]/G is not reached by a timing clock
+The latch lista1/value_reg[2] cannot be properly analyzed as its control pin lista1/value_reg[2]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#15 Warning
 Non-clocked latch  
-The latch lista1/value_reg[4] cannot be properly analyzed as its control pin lista1/value_reg[4]/G is not reached by a timing clock
+The latch lista1/value_reg[3] cannot be properly analyzed as its control pin lista1/value_reg[3]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#16 Warning
 Non-clocked latch  
+The latch lista1/value_reg[4] cannot be properly analyzed as its control pin lista1/value_reg[4]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#17 Warning
+Non-clocked latch  
 The latch lista1/value_reg[5] cannot be properly analyzed as its control pin lista1/value_reg[5]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#18 Warning
+Non-clocked latch  
+The latch lista2/posx_reg[1] cannot be properly analyzed as its control pin lista2/posx_reg[1]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#19 Warning
+Non-clocked latch  
+The latch lista2/posx_reg[2] cannot be properly analyzed as its control pin lista2/posx_reg[2]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#20 Warning
+Non-clocked latch  
+The latch lista2/posx_reg[3] cannot be properly analyzed as its control pin lista2/posx_reg[3]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#21 Warning
+Non-clocked latch  
+The latch lista2/posx_reg[4] cannot be properly analyzed as its control pin lista2/posx_reg[4]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#22 Warning
+Non-clocked latch  
+The latch lista2/posx_reg[5] cannot be properly analyzed as its control pin lista2/posx_reg[5]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#23 Warning
+Non-clocked latch  
+The latch lista2/posx_reg[6] cannot be properly analyzed as its control pin lista2/posx_reg[6]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#24 Warning
+Non-clocked latch  
+The latch lista2/posx_reg[7] cannot be properly analyzed as its control pin lista2/posx_reg[7]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#25 Warning
+Non-clocked latch  
+The latch lista2/posx_reg[8] cannot be properly analyzed as its control pin lista2/posx_reg[8]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#26 Warning
+Non-clocked latch  
+The latch lista2/posx_reg[9] cannot be properly analyzed as its control pin lista2/posx_reg[9]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#27 Warning
+Non-clocked latch  
+The latch lista2/value_reg[0] cannot be properly analyzed as its control pin lista2/value_reg[0]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#28 Warning
+Non-clocked latch  
+The latch lista2/value_reg[1] cannot be properly analyzed as its control pin lista2/value_reg[1]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#29 Warning
+Non-clocked latch  
+The latch lista2/value_reg[2] cannot be properly analyzed as its control pin lista2/value_reg[2]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#30 Warning
+Non-clocked latch  
+The latch lista2/value_reg[4] cannot be properly analyzed as its control pin lista2/value_reg[4]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#31 Warning
+Non-clocked latch  
+The latch lista2/value_reg[5] cannot be properly analyzed as its control pin lista2/value_reg[5]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#32 Warning
+Non-clocked latch  
+The latch lista3/posx_reg[0] cannot be properly analyzed as its control pin lista3/posx_reg[0]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#33 Warning
+Non-clocked latch  
+The latch lista3/posx_reg[1] cannot be properly analyzed as its control pin lista3/posx_reg[1]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#34 Warning
+Non-clocked latch  
+The latch lista3/posx_reg[2] cannot be properly analyzed as its control pin lista3/posx_reg[2]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#35 Warning
+Non-clocked latch  
+The latch lista3/posx_reg[31] cannot be properly analyzed as its control pin lista3/posx_reg[31]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#36 Warning
+Non-clocked latch  
+The latch lista3/posx_reg[3] cannot be properly analyzed as its control pin lista3/posx_reg[3]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#37 Warning
+Non-clocked latch  
+The latch lista3/posx_reg[4] cannot be properly analyzed as its control pin lista3/posx_reg[4]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#38 Warning
+Non-clocked latch  
+The latch lista3/posx_reg[5] cannot be properly analyzed as its control pin lista3/posx_reg[5]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#39 Warning
+Non-clocked latch  
+The latch lista3/posx_reg[6] cannot be properly analyzed as its control pin lista3/posx_reg[6]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#40 Warning
+Non-clocked latch  
+The latch lista3/posx_reg[7] cannot be properly analyzed as its control pin lista3/posx_reg[7]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#41 Warning
+Non-clocked latch  
+The latch lista3/posx_reg[8] cannot be properly analyzed as its control pin lista3/posx_reg[8]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#42 Warning
+Non-clocked latch  
+The latch lista3/posx_reg[9] cannot be properly analyzed as its control pin lista3/posx_reg[9]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#43 Warning
+Non-clocked latch  
+The latch lista3/value_reg[0] cannot be properly analyzed as its control pin lista3/value_reg[0]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#44 Warning
+Non-clocked latch  
+The latch lista3/value_reg[1] cannot be properly analyzed as its control pin lista3/value_reg[1]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#45 Warning
+Non-clocked latch  
+The latch lista3/value_reg[2] cannot be properly analyzed as its control pin lista3/value_reg[2]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#46 Warning
+Non-clocked latch  
+The latch lista3/value_reg[3] cannot be properly analyzed as its control pin lista3/value_reg[3]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#47 Warning
+Non-clocked latch  
+The latch lista3/value_reg[4] cannot be properly analyzed as its control pin lista3/value_reg[4]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#48 Warning
+Non-clocked latch  
+The latch lista3/value_reg[5] cannot be properly analyzed as its control pin lista3/value_reg[5]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#49 Warning
+Non-clocked latch  
+The latch lista4/posx_reg[0] cannot be properly analyzed as its control pin lista4/posx_reg[0]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#50 Warning
+Non-clocked latch  
+The latch lista4/posx_reg[1] cannot be properly analyzed as its control pin lista4/posx_reg[1]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#51 Warning
+Non-clocked latch  
+The latch lista4/posx_reg[2] cannot be properly analyzed as its control pin lista4/posx_reg[2]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#52 Warning
+Non-clocked latch  
+The latch lista4/posx_reg[3] cannot be properly analyzed as its control pin lista4/posx_reg[3]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#53 Warning
+Non-clocked latch  
+The latch lista4/posx_reg[4] cannot be properly analyzed as its control pin lista4/posx_reg[4]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#54 Warning
+Non-clocked latch  
+The latch lista4/posx_reg[5] cannot be properly analyzed as its control pin lista4/posx_reg[5]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#55 Warning
+Non-clocked latch  
+The latch lista4/posx_reg[6] cannot be properly analyzed as its control pin lista4/posx_reg[6]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#56 Warning
+Non-clocked latch  
+The latch lista4/posx_reg[7] cannot be properly analyzed as its control pin lista4/posx_reg[7]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#57 Warning
+Non-clocked latch  
+The latch lista4/posx_reg[8] cannot be properly analyzed as its control pin lista4/posx_reg[8]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#58 Warning
+Non-clocked latch  
+The latch lista4/posx_reg[9] cannot be properly analyzed as its control pin lista4/posx_reg[9]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#59 Warning
+Non-clocked latch  
+The latch lista4/value_reg[0] cannot be properly analyzed as its control pin lista4/value_reg[0]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#60 Warning
+Non-clocked latch  
+The latch lista4/value_reg[1] cannot be properly analyzed as its control pin lista4/value_reg[1]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#61 Warning
+Non-clocked latch  
+The latch lista4/value_reg[2] cannot be properly analyzed as its control pin lista4/value_reg[2]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#62 Warning
+Non-clocked latch  
+The latch lista4/value_reg[3] cannot be properly analyzed as its control pin lista4/value_reg[3]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#63 Warning
+Non-clocked latch  
+The latch lista4/value_reg[4] cannot be properly analyzed as its control pin lista4/value_reg[4]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#64 Warning
+Non-clocked latch  
+The latch lista4/value_reg[5] cannot be properly analyzed as its control pin lista4/value_reg[5]/G is not reached by a timing clock
 Related violations: <none>
 
 

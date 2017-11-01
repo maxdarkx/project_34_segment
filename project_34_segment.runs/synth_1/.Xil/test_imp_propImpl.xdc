@@ -1,4 +1,4 @@
-set_property SRC_FILE_INFO {cfile:{C:/Users/Juan Carlos/Xilinx/project 34 segment/project_34_segment/project_34_segment.srcs/sources_1/new/Basys3_Master.xdc} rfile:../../../project_34_segment.srcs/sources_1/new/Basys3_Master.xdc id:1} [current_design]
+set_property SRC_FILE_INFO {cfile:{C:/Users/Juan Carlos/Documents/Vivado/project_34_segment/project_34_segment.srcs/sources_1/new/Basys3_Master.xdc} rfile:../../../project_34_segment.srcs/sources_1/new/Basys3_Master.xdc id:1} [current_design]
 set_property src_info {type:XDC file:1 line:7 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN W5 [get_ports CLK]
 set_property src_info {type:XDC file:1 line:15 export:INPUT save:INPUT read:READ} [current_design]

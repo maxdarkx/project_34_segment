@@ -1,12 +1,12 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2017.2.1 (win64) Build 1957588 Wed Aug  9 16:32:24 MDT 2017
-| Date         : Sat Oct 21 21:43:49 2017
-| Host         : JORGE-052 running 64-bit major release  (build 9200)
+| Tool Version : Vivado v.2017.2 (win64) Build 1909853 Thu Jun 15 18:39:09 MDT 2017
+| Date         : Fri Oct 27 18:46:49 2017
+| Host         : DESKTOP-FLLH9B9 running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -warn_on_violation -max_paths 10 -file test_imp_timing_summary_routed.rpt -rpx test_imp_timing_summary_routed.rpx
 | Design       : test_imp
 | Device       : 7a35t-cpg236
-| Speed File   : -1  PRODUCTION 1.18 2017-07-26
+| Speed File   : -1  PRODUCTION 1.17 2017-05-11
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Timing Summary Report
@@ -52,37 +52,37 @@ Table of Contents
 
 1. checking no_clock
 --------------------
- There are 16 register/latch pins with no clock driven by root clock pin: ori[0] (HIGH)
+ There are 64 register/latch pins with no clock driven by root clock pin: ori[0] (HIGH)
 
- There are 16 register/latch pins with no clock driven by root clock pin: ori[1] (HIGH)
+ There are 64 register/latch pins with no clock driven by root clock pin: ori[1] (HIGH)
 
- There are 16 register/latch pins with no clock driven by root clock pin: ori[2] (HIGH)
+ There are 64 register/latch pins with no clock driven by root clock pin: ori[2] (HIGH)
 
- There are 16 register/latch pins with no clock driven by root clock pin: ori[3] (HIGH)
+ There are 64 register/latch pins with no clock driven by root clock pin: ori[3] (HIGH)
 
- There are 36 register/latch pins with no clock driven by root clock pin: Inst_vga_ctrl_640x480_60Hz/clk_25MHz_reg/Q (HIGH)
+ There are 53 register/latch pins with no clock driven by root clock pin: Inst_vga_ctrl_640x480_60Hz/clk_25MHz_reg/Q (HIGH)
 
- There are 16 register/latch pins with no clock driven by root clock pin: Inst_vga_ctrl_640x480_60Hz/vcounter_reg[0]/Q (HIGH)
+ There are 64 register/latch pins with no clock driven by root clock pin: Inst_vga_ctrl_640x480_60Hz/vcounter_reg[0]/Q (HIGH)
 
- There are 16 register/latch pins with no clock driven by root clock pin: Inst_vga_ctrl_640x480_60Hz/vcounter_reg[10]/Q (HIGH)
+ There are 64 register/latch pins with no clock driven by root clock pin: Inst_vga_ctrl_640x480_60Hz/vcounter_reg[10]/Q (HIGH)
 
- There are 16 register/latch pins with no clock driven by root clock pin: Inst_vga_ctrl_640x480_60Hz/vcounter_reg[1]/Q (HIGH)
+ There are 64 register/latch pins with no clock driven by root clock pin: Inst_vga_ctrl_640x480_60Hz/vcounter_reg[1]/Q (HIGH)
 
- There are 16 register/latch pins with no clock driven by root clock pin: Inst_vga_ctrl_640x480_60Hz/vcounter_reg[2]/Q (HIGH)
+ There are 64 register/latch pins with no clock driven by root clock pin: Inst_vga_ctrl_640x480_60Hz/vcounter_reg[2]/Q (HIGH)
 
- There are 16 register/latch pins with no clock driven by root clock pin: Inst_vga_ctrl_640x480_60Hz/vcounter_reg[3]/Q (HIGH)
+ There are 64 register/latch pins with no clock driven by root clock pin: Inst_vga_ctrl_640x480_60Hz/vcounter_reg[3]/Q (HIGH)
 
- There are 16 register/latch pins with no clock driven by root clock pin: Inst_vga_ctrl_640x480_60Hz/vcounter_reg[4]/Q (HIGH)
+ There are 64 register/latch pins with no clock driven by root clock pin: Inst_vga_ctrl_640x480_60Hz/vcounter_reg[4]/Q (HIGH)
 
- There are 16 register/latch pins with no clock driven by root clock pin: Inst_vga_ctrl_640x480_60Hz/vcounter_reg[5]/Q (HIGH)
+ There are 64 register/latch pins with no clock driven by root clock pin: Inst_vga_ctrl_640x480_60Hz/vcounter_reg[5]/Q (HIGH)
 
- There are 16 register/latch pins with no clock driven by root clock pin: Inst_vga_ctrl_640x480_60Hz/vcounter_reg[6]/Q (HIGH)
+ There are 64 register/latch pins with no clock driven by root clock pin: Inst_vga_ctrl_640x480_60Hz/vcounter_reg[6]/Q (HIGH)
 
- There are 16 register/latch pins with no clock driven by root clock pin: Inst_vga_ctrl_640x480_60Hz/vcounter_reg[7]/Q (HIGH)
+ There are 64 register/latch pins with no clock driven by root clock pin: Inst_vga_ctrl_640x480_60Hz/vcounter_reg[7]/Q (HIGH)
 
- There are 16 register/latch pins with no clock driven by root clock pin: Inst_vga_ctrl_640x480_60Hz/vcounter_reg[8]/Q (HIGH)
+ There are 64 register/latch pins with no clock driven by root clock pin: Inst_vga_ctrl_640x480_60Hz/vcounter_reg[8]/Q (HIGH)
 
- There are 16 register/latch pins with no clock driven by root clock pin: Inst_vga_ctrl_640x480_60Hz/vcounter_reg[9]/Q (HIGH)
+ There are 64 register/latch pins with no clock driven by root clock pin: Inst_vga_ctrl_640x480_60Hz/vcounter_reg[9]/Q (HIGH)
 
  There is 1 register/latch pin with no clock driven by root clock pin: clk_interno_reg/Q (HIGH)
 
@@ -99,14 +99,14 @@ Table of Contents
 
 4. checking unconstrained_internal_endpoints
 --------------------------------------------
- There are 98 pins that are not constrained for maximum delay. (HIGH)
+ There are 185 pins that are not constrained for maximum delay. (HIGH)
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
 
 5. checking no_input_delay
 --------------------------
- There are 5 input ports with no input delay specified. (HIGH)
+ There are 7 input ports with no input delay specified. (HIGH)
 
  There are 0 input ports with no input delay but user has a false path constraint.
 
@@ -158,7 +158,7 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-      9.106        0.000                      0                    1        0.212        0.000                      0                    1        4.500        0.000                       0                     2  
+      9.110        0.000                      0                    1        0.209        0.000                      0                    1        4.500        0.000                       0                     2  
 
 
 All user specified timing constraints are met.
@@ -181,7 +181,7 @@ sys_clk_pin  {0.000 5.000}      10.000          100.000
 
 Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
 -----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-sys_clk_pin         9.106        0.000                      0                    1        0.212        0.000                      0                    1        4.500        0.000                       0                     2  
+sys_clk_pin         9.110        0.000                      0                    1        0.209        0.000                      0                    1        4.500        0.000                       0                     2  
 
 
 ------------------------------------------------------------------------------------------------
@@ -212,15 +212,15 @@ Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing 
 From Clock:  sys_clk_pin
   To Clock:  sys_clk_pin
 
-Setup :            0  Failing Endpoints,  Worst Slack        9.106ns,  Total Violation        0.000ns
-Hold  :            0  Failing Endpoints,  Worst Slack        0.212ns,  Total Violation        0.000ns
+Setup :            0  Failing Endpoints,  Worst Slack        9.110ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.209ns,  Total Violation        0.000ns
 PW    :            0  Failing Endpoints,  Worst Slack        4.500ns,  Total Violation        0.000ns
 ---------------------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             9.106ns  (required time - arrival time)
+Slack (MET) :             9.110ns  (required time - arrival time)
   Source:                 clk_interno_reg/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            clk_interno_reg/D
@@ -228,11 +228,11 @@ Slack (MET) :             9.106ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.887ns  (logic 0.580ns (65.366%)  route 0.307ns (34.634%))
+  Data Path Delay:        0.884ns  (logic 0.580ns (65.608%)  route 0.304ns (34.392%))
   Logic Levels:           1  (LUT1=1)
   Clock Path Skew:        0.000ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.855ns = ( 14.855 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.154ns
+    Destination Clock Delay (DCD):    4.788ns = ( 14.788 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.087ns
     Clock Pessimism Removal (CPR):    0.299ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -248,15 +248,15 @@ Slack (MET) :             9.106ns  (required time - arrival time)
                          net (fo=0)                   0.000     0.000    CLK
     W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  CLK_IBUF_inst/O
                          net (fo=1, routed)           1.967     3.425    CLK_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  CLK_IBUF_BUFG_inst/O
-                         net (fo=1, routed)           1.633     5.154    CLK_IBUF_BUFG
-    SLICE_X1Y35          FDRE                                         r  clk_interno_reg/C
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.096     3.521 r  CLK_IBUF_BUFG_inst/O
+                         net (fo=1, routed)           1.566     5.087    CLK_IBUF_BUFG
+    SLICE_X43Y43         FDRE                                         r  clk_interno_reg/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X1Y35          FDRE (Prop_fdre_C_Q)         0.456     5.610 f  clk_interno_reg/Q
-                         net (fo=2, routed)           0.307     5.918    clk_interno_reg_n_0
-    SLICE_X1Y35          LUT1 (Prop_lut1_I0_O)        0.124     6.042 r  clk_interno_i_1/O
-                         net (fo=1, routed)           0.000     6.042    clk_interno_i_1_n_0
-    SLICE_X1Y35          FDRE                                         r  clk_interno_reg/D
+    SLICE_X43Y43         FDRE (Prop_fdre_C_Q)         0.456     5.543 f  clk_interno_reg/Q
+                         net (fo=2, routed)           0.304     5.847    clk
+    SLICE_X43Y43         LUT1 (Prop_lut1_I0_O)        0.124     5.971 r  clk_interno_i_1/O
+                         net (fo=1, routed)           0.000     5.971    p_0_in
+    SLICE_X43Y43         FDRE                                         r  clk_interno_reg/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -265,17 +265,17 @@ Slack (MET) :             9.106ns  (required time - arrival time)
                          net (fo=0)                   0.000    10.000    CLK
     W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  CLK_IBUF_inst/O
                          net (fo=1, routed)           1.862    13.250    CLK_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  CLK_IBUF_BUFG_inst/O
-                         net (fo=1, routed)           1.514    14.855    CLK_IBUF_BUFG
-    SLICE_X1Y35          FDRE                                         r  clk_interno_reg/C
-                         clock pessimism              0.299    15.154    
-                         clock uncertainty           -0.035    15.119    
-    SLICE_X1Y35          FDRE (Setup_fdre_C_D)        0.029    15.148    clk_interno_reg
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091    13.341 r  CLK_IBUF_BUFG_inst/O
+                         net (fo=1, routed)           1.447    14.788    CLK_IBUF_BUFG
+    SLICE_X43Y43         FDRE                                         r  clk_interno_reg/C
+                         clock pessimism              0.299    15.087    
+                         clock uncertainty           -0.035    15.052    
+    SLICE_X43Y43         FDRE (Setup_fdre_C_D)        0.029    15.081    clk_interno_reg
   -------------------------------------------------------------------
-                         required time                         15.148    
-                         arrival time                          -6.042    
+                         required time                         15.081    
+                         arrival time                          -5.971    
   -------------------------------------------------------------------
-                         slack                                  9.106    
+                         slack                                  9.110    
 
 
 
@@ -283,7 +283,7 @@ Slack (MET) :             9.106ns  (required time - arrival time)
 
 Min Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             0.212ns  (arrival time - required time)
+Slack (MET) :             0.209ns  (arrival time - required time)
   Source:                 clk_interno_reg/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            clk_interno_reg/D
@@ -291,11 +291,11 @@ Slack (MET) :             0.212ns  (arrival time - required time)
   Path Group:             sys_clk_pin
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.303ns  (logic 0.186ns (61.324%)  route 0.117ns (38.676%))
+  Data Path Delay:        0.300ns  (logic 0.186ns (61.991%)  route 0.114ns (38.009%))
   Logic Levels:           1  (LUT1=1)
   Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.988ns
-    Source Clock Delay      (SCD):    1.474ns
+    Destination Clock Delay (DCD):    1.960ns
+    Source Clock Delay      (SCD):    1.446ns
     Clock Pessimism Removal (CPR):    0.514ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
@@ -306,15 +306,15 @@ Slack (MET) :             0.212ns  (arrival time - required time)
                          net (fo=0)                   0.000     0.000    CLK
     W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  CLK_IBUF_inst/O
                          net (fo=1, routed)           0.631     0.858    CLK_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  CLK_IBUF_BUFG_inst/O
-                         net (fo=1, routed)           0.591     1.474    CLK_IBUF_BUFG
-    SLICE_X1Y35          FDRE                                         r  clk_interno_reg/C
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  CLK_IBUF_BUFG_inst/O
+                         net (fo=1, routed)           0.563     1.446    CLK_IBUF_BUFG
+    SLICE_X43Y43         FDRE                                         r  clk_interno_reg/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X1Y35          FDRE (Prop_fdre_C_Q)         0.141     1.615 f  clk_interno_reg/Q
-                         net (fo=2, routed)           0.117     1.732    clk_interno_reg_n_0
-    SLICE_X1Y35          LUT1 (Prop_lut1_I0_O)        0.045     1.777 r  clk_interno_i_1/O
-                         net (fo=1, routed)           0.000     1.777    clk_interno_i_1_n_0
-    SLICE_X1Y35          FDRE                                         r  clk_interno_reg/D
+    SLICE_X43Y43         FDRE (Prop_fdre_C_Q)         0.141     1.587 f  clk_interno_reg/Q
+                         net (fo=2, routed)           0.114     1.701    clk
+    SLICE_X43Y43         LUT1 (Prop_lut1_I0_O)        0.045     1.746 r  clk_interno_i_1/O
+                         net (fo=1, routed)           0.000     1.746    p_0_in
+    SLICE_X43Y43         FDRE                                         r  clk_interno_reg/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -323,16 +323,16 @@ Slack (MET) :             0.212ns  (arrival time - required time)
                          net (fo=0)                   0.000     0.000    CLK
     W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  CLK_IBUF_inst/O
                          net (fo=1, routed)           0.685     1.099    CLK_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  CLK_IBUF_BUFG_inst/O
-                         net (fo=1, routed)           0.861     1.988    CLK_IBUF_BUFG
-    SLICE_X1Y35          FDRE                                         r  clk_interno_reg/C
-                         clock pessimism             -0.514     1.474    
-    SLICE_X1Y35          FDRE (Hold_fdre_C_D)         0.091     1.565    clk_interno_reg
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  CLK_IBUF_BUFG_inst/O
+                         net (fo=1, routed)           0.833     1.960    CLK_IBUF_BUFG
+    SLICE_X43Y43         FDRE                                         r  clk_interno_reg/C
+                         clock pessimism             -0.514     1.446    
+    SLICE_X43Y43         FDRE (Hold_fdre_C_D)         0.091     1.537    clk_interno_reg
   -------------------------------------------------------------------
-                         required time                         -1.565    
-                         arrival time                           1.777    
+                         required time                         -1.537    
+                         arrival time                           1.746    
   -------------------------------------------------------------------
-                         slack                                  0.212    
+                         slack                                  0.209    
 
 
 
@@ -346,12 +346,12 @@ Period(ns):         10.000
 Sources:            { CLK }
 
 Check Type        Corner  Lib Pin  Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location       Pin
-Min Period        n/a     BUFG/I   n/a            2.155         10.000      7.845      BUFGCTRL_X0Y0  CLK_IBUF_BUFG_inst/I
-Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X1Y35    clk_interno_reg/C
-Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y35    clk_interno_reg/C
-Low Pulse Width   Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y35    clk_interno_reg/C
-High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y35    clk_interno_reg/C
-High Pulse Width  Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y35    clk_interno_reg/C
+Min Period        n/a     BUFG/I   n/a            2.155         10.000      7.845      BUFGCTRL_X0Y1  CLK_IBUF_BUFG_inst/I
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X43Y43   clk_interno_reg/C
+Low Pulse Width   Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X43Y43   clk_interno_reg/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X43Y43   clk_interno_reg/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X43Y43   clk_interno_reg/C
+High Pulse Width  Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X43Y43   clk_interno_reg/C
 
 
 

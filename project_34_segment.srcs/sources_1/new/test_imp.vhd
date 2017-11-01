@@ -36,11 +36,11 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 entity test_imp is
 Port ( 
        CLK :   in  STD_LOGIC;
-       hcount: in  STD_LOGIC_VECTOR (10 downto 0);  --para simular
-       vcount: in  STD_LOGIC_VECTOR (10 downto 0);	--para simular
-       --RST : in  STD_LOGIC;
-      -- HS :  out  STD_LOGIC;
-       --VS : out  STD_LOGIC;
+       --hcount: in  STD_LOGIC_VECTOR (10 downto 0);  --para simular
+       --vcount: in  STD_LOGIC_VECTOR (10 downto 0);	--para simular
+       RST : in  STD_LOGIC;
+       HS :  out  STD_LOGIC;
+       VS : out  STD_LOGIC;
        sel: in std_logic_vector(1 downto 0); -- selector entre grupo, cedulas, nombres y apellidos
        ori: in std_logic_vector(3 downto 0); --selector de la orientacion
        RGB : out  STD_LOGIC_VECTOR (11 downto 0)
@@ -50,19 +50,19 @@ end test_imp;
 
 architecture Behavioral of test_imp is
 
-	--COMPONENT vga_ctrl_640x480_60Hz
-	--PORT(
-	--		rst : IN std_logic;
-	--		clk : IN std_logic;
-	--		rgb_in : IN std_logic_vector(11 downto 0);          
-	--		HS : OUT std_logic;
-	--		VS : OUT std_logic;
-	--		hcount : OUT std_logic_vector(10 downto 0);
-	--		vcount : OUT std_logic_vector(10 downto 0);
-	--		rgb_out : OUT std_logic_vector(11 downto 0);
-	--		blank : OUT std_logic
-	--	);
-	--END COMPONENT;
+	COMPONENT vga_ctrl_640x480_60Hz
+	PORT(
+			rst : IN std_logic;
+			clk : IN std_logic;
+			rgb_in : IN std_logic_vector(11 downto 0);          
+			HS : OUT std_logic;
+			VS : OUT std_logic;
+			hcount : OUT std_logic_vector(10 downto 0);
+			vcount : OUT std_logic_vector(10 downto 0);
+			rgb_out : OUT std_logic_vector(11 downto 0);
+			blank : OUT std_logic
+		);
+	END COMPONENT;
 	
 	COMPONENT display_34 
 	GENERIC ( 
@@ -131,8 +131,8 @@ architecture Behavioral of test_imp is
 	
 	-- Declaramos seales
 	signal val,val1,val2,val3,val4: STD_LOGIC_VECTOR(5 downto 0):=(others=>'0') ;
-	--signal hcount : STD_LOGIC_VECTOR (10 downto 0):=(others=>'0'); --para simular
-	--signal vcount : STD_LOGIC_VECTOR (10 downto 0):=(others=>'0'); --para simular
+	signal hcount : STD_LOGIC_VECTOR (10 downto 0):=(others=>'0'); --para simular
+	signal vcount : STD_LOGIC_VECTOR (10 downto 0):=(others=>'0'); --para simular
     signal paint0,paint1,paint2,paint3 : STD_LOGIC:='0';
     signal rgb_x: std_logic:='0';
     signal rgb_aux : STD_LOGIC_VECTOR (11 downto 0):=(others=>'0');
@@ -140,10 +140,10 @@ architecture Behavioral of test_imp is
 	signal rgb_aux1 : STD_LOGIC_VECTOR (3 downto 0):="0000";
 	signal rgb_aux2 : STD_LOGIC_VECTOR (3 downto 0):="0000";
 	signal rgb_aux3 : STD_LOGIC_VECTOR (3 downto 0):="0000";
-	--signal CLK_1Hz : STD_LOGIC:='0';
-	--signal count_clk : INTEGER:=0;
+	signal CLK_1Hz : STD_LOGIC:='0';
+	signal count_clk : INTEGER:=0;
 	signal count_color: integer:=0;
-	--signal clk_interno : STD_LOGIC:='0';
+	signal clk_interno : STD_LOGIC:='0';
 	signal count_1hz: INTEGER := 0;
 	signal px,px1,px2,px3,px4: integer:=0;
 	signal py,py1,py2,py3,py4: integer:=0;
@@ -151,25 +151,25 @@ architecture Behavioral of test_imp is
 
 begin
 
- --	CLK_50MHZ: process (CLK)
- --   begin  
- --       if (CLK'event and CLK = '1') then
- --           clk_interno <= NOT clk_interno;
- --       end if;
- --   end process;
+ 	CLK_50MHZ: process (CLK)
+    begin  
+        if (CLK'event and CLK = '1') then
+            clk_interno <= NOT clk_interno;
+        end if;
+    end process;
 	
 
-	--CLK_DIV: process (clk_interno)
-	--begin
-	--	if(clk_interno'event and clk_interno='1') then
-	--		if (count_clk = 5000000) then
-	--			count_clk <= 0;
-	--			CLK_1Hz <= not CLK_1Hz;
-	--		else
-	--			count_clk <= count_clk +1;
-	--		end if;
-	--	end if;
-	--end process;
+	CLK_DIV: process (clk_interno)
+	begin
+		if(clk_interno'event and clk_interno='1') then
+			if (count_clk = 5000000) then
+				count_clk <= 0;
+				CLK_1Hz <= not CLK_1Hz;
+			else
+				count_clk <= count_clk +1;
+			end if;
+		end if;
+	end process;
 	
 	lista1:  apellidos 
 	port MAP(
@@ -241,84 +241,46 @@ begin
 			val4 when sel= "11" else --GRUPO
 			"100100"; --modificar con degradado process
 
+--rgb_aux<="000000000000" when paint0 = '0' else
+--         "111100000000";   
+--color: process(sel,paint0,hcount)
+--begin
+--	--if(cont<15 and hcount<640) then
+--	--	cont<=cont+'1';
+--	--else
+--	--	cont<="0000";
+--	--end if;
 
-color: process(sel,paint0,hcount)
-begin
-	if sel= "00" and paint0='1' then --APELLIDOS
-		rgb_aux<="111100000000";
-	elsif sel= "01" and paint0='1' then --CEDULAS
-		rgb_aux<="000011110000";
-	elsif sel= "10" and paint0='1' then --NOMBRES
-		rgb_aux<="000000001111";
-	elsif sel= "11"  and paint0='1' then --GRUPO
-		rgb_aux<="100010001000";
-	else
-		if sel= "00" then --APELLIDOS
-			--rgb_aux<="111100000000";
-			if(cont<15 and hcount<640) then
-				cont<=cont+'1';
-			else
-				cont<="0000";
-			end if;
-			rgb_aux(11)<=cont(3);
-			rgb_aux(10)<=cont(2);
-			rgb_aux(9)<=cont(1);
-			rgb_aux(8)<=cont(0);
-		elsif sel= "01" then --CEDULAS
-			--rgb_aux<="000011110000";
-			if(cont<15) then
-				cont<=cont+'1';
-			else
-				cont<="0000";
-			end if;
-			rgb_aux(7)<=cont(3);
-			rgb_aux(6)<=cont(2);
-			rgb_aux(5)<=cont(1);
-			rgb_aux(4)<=cont(0);
-		elsif sel= "10" then --NOMBRES
-			--rgb_aux<="000000001111";
-			if(cont<15) then
-				cont<=cont+'1';
-			else
-				cont<="0000";
-			end if;
-			rgb_aux(3)<=cont(3);
-			rgb_aux(2)<=cont(2);
-			rgb_aux(1)<=cont(1);
-			rgb_aux(0)<=cont(0);
-		elsif sel= "11" then --GRUPO
-			--rgb_aux<="100010001000";
-			if(cont<15) then
-				cont<=cont+'1';
-			else
-				cont<="0000";
-			end if;
-			rgb_aux(11)<=cont(3);
-			rgb_aux(7)<=cont(2);
-			rgb_aux(3)<=cont(1);
-			
-			
-		end if;
-	end if;
-end process;
+--	if sel= "00" and paint0='1' then --APELLIDOS
+--		rgb_aux<="111100000000";
+--	elsif sel= "01" and paint0='1' then --CEDULAS
+--		rgb_aux<="000011110000";
+--	elsif sel= "10" and paint0='1' then --NOMBRES
+--		rgb_aux<="000000001111";
+--	elsif sel= "11"  and paint0='1' then --GRUPO
+--		rgb_aux<="100010001000";
+--	else
+--		rgb_aux<="000000000000";
+--	end if;
+--end process;
 
 
 	
-	--rgb_aux <= paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0;
+	rgb_aux <= paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0;
 
-	--Inst_vga_ctrl_640x480_60Hz: vga_ctrl_640x480_60Hz PORT MAP(
-	--	rst => RST,
-	--	clk => clk_interno,
-	--	rgb_in => rgb_aux,
-	--	HS => HS,
-	--	VS => VS,
-	--	hcount => hcount,
-	--	vcount => vcount,
-	--	rgb_out => rgb_auxx,
-	--	blank => open
-	--);
+	Inst_vga_ctrl_640x480_60Hz: vga_ctrl_640x480_60Hz PORT MAP(
+		rst => RST,
+		clk => clk_interno,
+		rgb_in => rgb_aux,
+		HS => HS,
+		VS => VS,
+		hcount => hcount,
+		vcount => vcount,
+		rgb_out => rgb_auxx,
+		blank => open
+	);
 
-	--RGB <= rgb_auxx;
-	rgb <=rgb_aux;
+	RGB <= rgb_auxx;
+	--rgb <=rgb_aux;
 
 end Behavioral;
