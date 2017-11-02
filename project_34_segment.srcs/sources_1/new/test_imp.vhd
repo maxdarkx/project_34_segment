@@ -36,11 +36,11 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 entity test_imp is
 Port ( 
        CLK :   in  STD_LOGIC;
-       --hcount: in  STD_LOGIC_VECTOR (10 downto 0);  --para simular
-       --vcount: in  STD_LOGIC_VECTOR (10 downto 0);	--para simular
-       RST : in  STD_LOGIC;
-       HS :  out  STD_LOGIC;
-       VS : out  STD_LOGIC;
+       hcount: in  STD_LOGIC_VECTOR (10 downto 0);  --poner para simular
+       vcount: in  STD_LOGIC_VECTOR (10 downto 0);	--poner para simular
+     --  RST : in  STD_LOGIC;	--quitar para simulacion
+     --  HS :  out  STD_LOGIC; --quitar para simulacion
+     -- VS : out  STD_LOGIC;	--quitar para simulacion
        sel: in std_logic_vector(1 downto 0); -- selector entre grupo, cedulas, nombres y apellidos
        ori: in std_logic_vector(3 downto 0); --selector de la orientacion
        RGB : out  STD_LOGIC_VECTOR (11 downto 0)
@@ -131,8 +131,8 @@ architecture Behavioral of test_imp is
 	
 	-- Declaramos seales
 	signal val,val1,val2,val3,val4: STD_LOGIC_VECTOR(5 downto 0):=(others=>'0') ;
-	signal hcount : STD_LOGIC_VECTOR (10 downto 0):=(others=>'0'); --para simular
-	signal vcount : STD_LOGIC_VECTOR (10 downto 0):=(others=>'0'); --para simular
+	--signal hcount : STD_LOGIC_VECTOR (10 downto 0):=(others=>'0'); --comentar para simular
+	--signal vcount : STD_LOGIC_VECTOR (10 downto 0):=(others=>'0'); --comentar para simular
     signal paint0,paint1,paint2,paint3 : STD_LOGIC:='0';
     signal rgb_x: std_logic:='0';
     signal rgb_aux : STD_LOGIC_VECTOR (11 downto 0):=(others=>'0');
@@ -148,29 +148,49 @@ architecture Behavioral of test_imp is
 	signal px,px1,px2,px3,px4: integer:=0;
 	signal py,py1,py2,py3,py4: integer:=0;
 	signal cont: std_logic_vector(3 downto 0):="0000";
+	signal cont1: std_logic_vector(5 downto 0):="000000";
 
 begin
 
- 	CLK_50MHZ: process (CLK)
-    begin  
-        if (CLK'event and CLK = '1') then
-            clk_interno <= NOT clk_interno;
-        end if;
-    end process;
+
+--______________________________________________________________
+--comentar para simular
+--______________________________________________________________
+ --	CLK_50MHZ: process (CLK)
+ --   begin  
+ --       if (CLK'event and CLK = '1') then
+ --           clk_interno <= NOT clk_interno;
+ --       end if;
+ --   end process;
 	
 
-	CLK_DIV: process (clk_interno)
-	begin
-		if(clk_interno'event and clk_interno='1') then
-			if (count_clk = 5000000) then
-				count_clk <= 0;
-				CLK_1Hz <= not CLK_1Hz;
-			else
-				count_clk <= count_clk +1;
-			end if;
-		end if;
-	end process;
-	
+	--CLK_DIV: process (clk_interno)
+	--begin
+	--	if(clk_interno'event and clk_interno='1') then
+	--		if (count_clk = 5000000) then
+	--			count_clk <= 0;
+	--			CLK_1Hz <= not CLK_1Hz;
+	--		else
+	--			count_clk <= count_clk +1;
+	--		end if;
+	--	end if;
+	--end process;
+
+	--Inst_vga_ctrl_640x480_60Hz: vga_ctrl_640x480_60Hz PORT MAP(
+	--	rst => RST,
+	--	clk => clk_interno,
+	--	rgb_in => rgb_aux,
+	--	HS => HS,
+	--	VS => VS,
+	--	hcount => hcount,
+	--	vcount => vcount,
+	--	rgb_out => rgb_auxx,
+	--	blank => open
+	--);
+--________________________________________________________________	
+
+
+
 	lista1:  apellidos 
 	port MAP(
 		hcount	=> hcount,
@@ -241,46 +261,58 @@ begin
 			val4 when sel= "11" else --GRUPO
 			"100100"; --modificar con degradado process
 
+
+
 --rgb_aux<="000000000000" when paint0 = '0' else
 --         "111100000000";   
---color: process(sel,paint0,hcount)
---begin
---	--if(cont<15 and hcount<640) then
---	--	cont<=cont+'1';
---	--else
---	--	cont<="0000";
---	--end if;
+color: process(sel,paint0,hcount)
+	constant apellidos: std_logic_vector(11 downto 0):="111100000000";
+	constant cedulas: std_logic_vector(11 downto 0):="000011110000";
+	constant nombres: std_logic_vector(11 downto 0):="000000001111";
+	constant grupo: std_logic_vector(11 downto 0):="100010001000";
+	variable fondo: std_logic_vector(11 downto 0):="000000000000";
+begin
+	if(cont<15 and hcount<640) then
+		cont<=cont+'1';
+	else
+		cont<="0000";
+		cont1<=cont1+'1';
+		if hcount=639 then
+			cont1<="000000";
+		end if;
 
---	if sel= "00" and paint0='1' then --APELLIDOS
---		rgb_aux<="111100000000";
---	elsif sel= "01" and paint0='1' then --CEDULAS
---		rgb_aux<="000011110000";
---	elsif sel= "10" and paint0='1' then --NOMBRES
---		rgb_aux<="000000001111";
---	elsif sel= "11"  and paint0='1' then --GRUPO
---		rgb_aux<="100010001000";
---	else
---		rgb_aux<="000000000000";
---	end if;
---end process;
+
+	end if;
+
+	if sel= "00" and paint0='1' then --APELLIDOS
+		rgb_aux<=apellidos;
+	elsif sel= "01" and paint0='1' then --CEDULAS
+		rgb_aux<=cedulas;
+	elsif sel= "10" and paint0='1' then --NOMBRES
+		rgb_aux<=nombres;
+	elsif sel= "11"  and paint0='1' then --GRUPO
+		rgb_aux<=grupo;
+	else
+		if sel= "00" then --APELLIDOS
+			fondo:= not apellidos;
+		elsif sel= "01" then --CEDULAS
+			fondo:= not  cedulas;
+		elsif sel= "10" then --NOMBRES
+			fondo:= not nombres;
+		else --GRUPO
+			fondo:=not grupo;
+		end if;
+		rgb_aux<=fondo+cont1;
+	end if;
+end process;
 
 
 	
-	rgb_aux <= paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0;
+	--rgb_aux <= paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0 & paint0;
 
-	Inst_vga_ctrl_640x480_60Hz: vga_ctrl_640x480_60Hz PORT MAP(
-		rst => RST,
-		clk => clk_interno,
-		rgb_in => rgb_aux,
-		HS => HS,
-		VS => VS,
-		hcount => hcount,
-		vcount => vcount,
-		rgb_out => rgb_auxx,
-		blank => open
-	);
 
-	RGB <= rgb_auxx;
-	--rgb <=rgb_aux;
+
+	--RGB <= rgb_auxx;  --para trabajo normal
+	rgb <=rgb_aux;  --solo para simulacion
 
 end Behavioral;

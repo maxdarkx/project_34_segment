@@ -107,76 +107,152 @@ end process;
 
 
 
-process(hcount)
+capa3b: process(hcount)
 	variable texto1: line;
-    variable color1,color2,color3: integer;
-    variable temp: std_logic_vector (11 downto 0);
+    variable color: std_logic_vector(11 downto 0);
+    variable temp1,temp2,temp3: std_logic_vector (3 downto 0);
     file solucion: text;
     variable c: std_logic:='0';
 begin
-	file_open(solucion, "resultados.m",  append_mode);
-	temp:= rgb_out;
-	color1:= conv_integer(temp);
-	--temp:= rgb_out(7) & rgb_out(6) & rgb_out(5) & rgb_out(4);
-	--color2:= conv_integer(temp);
-	--temp:= rgb_out(11) & rgb_out(10) & rgb_out(9) & rgb_out(8);
-	--color3:= conv_integer(temp);
+	file_open(solucion, "resultados3.m",  append_mode);
+	temp3:= rgb_out(11) & rgb_out(10) & rgb_out(9) & rgb_out(8);
+	--color:= temp3 & temp2 & temp1;
 	
 	if(vcount=0 and hcount=0 and c='0') then
-		write(texto1,string'("clear all;"));
-		writeline(solucion,texto1);
-		write(texto1,string'("close all;"));
-		writeline(solucion,texto1);
-		write(texto1,string'("clc;"));
-		writeline(solucion,texto1);
-		write(texto1,string'("a=["));
+		write(texto1,string'("b=["));
 		c:= not c;
 		--write(texto1,string'(""));
 	end if;
 
-
-
-
-
-	write (texto1, color1);
+	write (texto1, conv_integer(temp3));
 
 	if(hcount<640)then
 		write (texto1, string'(","));
 	else
 		if (vcount<=480) then
-			write (texto1, string'(";"));
-			write(texto1, string'("   %("));
-			write(texto1, conv_integer(hcount));
-			write(texto1, string'(","));
-			write(texto1, conv_integer(vcount));
-			write(texto1, string'(")"));
-			writeline (solucion, texto1);
-
 			if (vcount=480) then
 				write (texto1, string'("];"));
 				writeline (solucion, texto1);
-				write(texto1,string'("imshow(a);"));
-				writeline (solucion, texto1);
-				write(texto1,string'("impixelinfo();"));
-				writeline (solucion, texto1);
 				file_close(solucion);
+			else
+				write (texto1, string'(";"));
+				write(texto1, string'("   %("));
+				write(texto1, conv_integer(hcount));
+				write(texto1, string'(","));
+				write(texto1, conv_integer(vcount));
+				write(texto1, string'(")"));
+				writeline (solucion, texto1);
 			end if;
-			
-			
-			
 		end if;
 	end if;
-
-	
-	--write (texto1, color2);
-	--write (texto1, string'(","));
-	--write (texto1, color3);
-	--write (texto1, string'(") "));
-
-	
-	
 end process;
 
+capa2g: process(hcount)
+	variable texto1: line;
+    variable color: std_logic_vector(11 downto 0);
+    variable temp1,temp2,temp3: std_logic_vector (3 downto 0);
+    file solucion: text;
+    variable c: std_logic:='0';
+begin
+	file_open(solucion, "resultados2.m",  append_mode);
+	temp2:= rgb_out(7) & rgb_out(6) & rgb_out(5) & rgb_out(4);
+	--color:= temp3 & temp2 & temp1;
+	
+	if(vcount=0 and hcount=0 and c='0') then
+		write(texto1,string'("g=["));
+		c:= not c;
+		--write(texto1,string'(""));
+	end if;
 
+	write (texto1, conv_integer(temp2));
+
+	if(hcount<640)then
+		write (texto1, string'(","));
+	else
+		if (vcount<=480) then
+			if (vcount=480) then
+				write (texto1, string'("];"));
+				writeline (solucion, texto1);
+				file_close(solucion);
+			else
+				write (texto1, string'(";"));
+				write(texto1, string'("   %("));
+				write(texto1, conv_integer(hcount));
+				write(texto1, string'(","));
+				write(texto1, conv_integer(vcount));
+				write(texto1, string'(")"));
+				writeline (solucion, texto1);
+			end if;
+		end if;
+	end if;
+end process;
+
+capa1r: process(hcount)
+	variable texto1: line;
+    variable color: std_logic_vector(11 downto 0);
+    variable temp1,temp2,temp3: std_logic_vector (3 downto 0);
+    file solucion: text;
+    variable c: std_logic:='0';
+begin
+	file_open(solucion, "resultados1.m",  append_mode);
+	temp1:= rgb_out(3) & rgb_out(2) & rgb_out(1) & rgb_out(0);
+	--color:= temp3 & temp2 & temp1;
+	
+	if(vcount=0 and hcount=0 and c='0') then
+		write(texto1,string'("r=["));
+		c:= not c;
+		--write(texto1,string'(""));
+	end if;
+
+	write (texto1, conv_integer(temp1));
+
+	if(hcount<640)then
+		write (texto1, string'(","));
+	else
+		if (vcount<=480) then
+			if (vcount=480) then
+				write (texto1, string'("];"));
+				writeline (solucion, texto1);
+				file_close(solucion);
+			else
+				write (texto1, string'(";"));
+				write(texto1, string'("   %("));
+				write(texto1, conv_integer(hcount));
+				write(texto1, string'(","));
+				write(texto1, conv_integer(vcount));
+				write(texto1, string'(")"));
+				writeline (solucion, texto1);
+			end if;
+		end if;
+	end if;
+end process;
+
+resultado: process(vcount)
+	variable texto1: line;
+    file solucion: text;
+ begin
+	if (vcount=480) then
+		file_open(solucion, "resultado.m",  append_mode);
+		write (texto1, string'("clear all;"));
+		write (texto1, string'("close all;"));
+		write (texto1, string'("clc;"));
+		writeline (solucion, texto1);
+
+		write (texto1, string'("run('resultados3.m');"));
+		write (texto1, string'("run('resultados2.m');"));
+		write (texto1, string'("run('resultados1.m');"));
+		writeline (solucion, texto1);
+
+		write (texto1, string'("imagen(:,:,1)=r.*16;"));
+		write (texto1, string'("imagen(:,:,2)=g.*16;"));
+		write (texto1, string'("imagen(:,:,3)=b.*16;"));
+		writeline (solucion, texto1);
+
+		write (texto1, string'("imshow(imagen);"));
+		write (texto1, string'("impixelinfo();"));
+		writeline (solucion, texto1);
+		file_close(solucion);
+	end if;
+end process;
 
 end Behavioral;
