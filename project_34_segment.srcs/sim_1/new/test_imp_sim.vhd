@@ -54,7 +54,7 @@ Port (
 end component;
 	
 	SIGNAL CLK_100:STD_LOGIC:='0';
-	SIGNAL sele : STD_LOGIC_VECTOR(1 downto 0):="01";
+	SIGNAL sele : STD_LOGIC_VECTOR(1 downto 0):="11";
 	SIGNAL origin : STD_LOGIC_VECTOR(3 downto 0):="0000";
 	SIGNAL rgb_out: std_logic_vector(11 downto 0):= (others=>'0');
 	--signal hs,vs: std_logic:='0';

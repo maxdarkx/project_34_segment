@@ -272,6 +272,7 @@ color: process(sel,paint0,hcount)
 	constant grupo: std_logic_vector(11 downto 0):="100010001000";
 	variable letra: std_logic_vector(11 downto 0):="000000000000";
 	variable fondo: std_logic_vector(11 downto 0):="000000000000";
+	variable svy,svx,m,sd,sdd,sdu,adiag,vald: integer;
 begin
 	if(hcount=0) then
 		cont<="0000";
@@ -285,31 +286,47 @@ begin
 	end if;
 
 
-	
+	if ori="1000" then --diagonal de izquierda a derecha
+		vald:=conv_integer(vcount);
+		svy:=480;
+		svx:=640;
+		adiag:=50;
+		sd := -(vald*svx/svy)+svx;
+        sdd:= sd - adiag;
+        sdu:= sd + adiag;
 
-	if paint0='1' then
-		if sel= "00" then --APELLIDOS
-			letra:=apellidos;
-		elsif sel= "01" then --CEDULAS
-			letra:=cedulas;
-		elsif sel= "10" then --NOMBRES
-			letra:=nombres;
-		else --GRUPO
-			letra:=grupo;
-		end if;
-		rgb_aux<=letra;
+        if (hcount>=sdd and hcount <= sdu) then
+        	rgb_aux<=apellidos;
+        else
+        	rgb_aux<=not apellidos;
+    	end if;
+
 	else
-		if sel= "00" then --APELLIDOS
-			fondo:= not apellidos;
-		elsif sel= "01" then --CEDULAS
-			fondo:= not  cedulas;
-		elsif sel= "10" then --NOMBRES
-			fondo:= not nombres;
-		else --GRUPO
-			fondo:=not grupo;
-		end if;
 
-		rgb_aux<=fondo+cont1;
+		if paint0='1' then
+			if sel= "00" then --APELLIDOS
+				letra:=apellidos;
+			elsif sel= "01" then --CEDULAS
+				letra:=cedulas;
+			elsif sel= "10" then --NOMBRES
+				letra:=nombres;
+			else --GRUPO
+				letra:=grupo;
+			end if;
+			rgb_aux<=letra;
+		else
+			if sel= "00" then --APELLIDOS
+				fondo:= not apellidos;
+			elsif sel= "01" then --CEDULAS
+				fondo:= not  cedulas;
+			elsif sel= "10" then --NOMBRES
+				fondo:= not nombres;
+			else --GRUPO
+				fondo:=not grupo;
+			end if;
+
+			rgb_aux<=fondo+cont1;
+		end if;
 	end if;
 end process;
 
