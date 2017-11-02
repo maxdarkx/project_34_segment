@@ -54,7 +54,7 @@ Port (
 end component;
 	
 	SIGNAL CLK_100:STD_LOGIC:='0';
-	SIGNAL sele : STD_LOGIC_VECTOR(1 downto 0):="00";
+	SIGNAL sele : STD_LOGIC_VECTOR(1 downto 0):="01";
 	SIGNAL origin : STD_LOGIC_VECTOR(3 downto 0):="0000";
 	SIGNAL rgb_out: std_logic_vector(11 downto 0):= (others=>'0');
 	--signal hs,vs: std_logic:='0';
@@ -136,12 +136,12 @@ begin
 				file_close(solucion);
 			else
 				write (texto1, string'(";"));
-				write(texto1, string'("   %("));
-				write(texto1, conv_integer(hcount));
-				write(texto1, string'(","));
-				write(texto1, conv_integer(vcount));
-				write(texto1, string'(")"));
-				writeline (solucion, texto1);
+				--write(texto1, string'("   %("));
+				--write(texto1, conv_integer(hcount));
+				--write(texto1, string'(","));
+				--write(texto1, conv_integer(vcount));
+				--write(texto1, string'(")"));
+				--writeline (solucion, texto1);
 			end if;
 		end if;
 	end if;
@@ -176,12 +176,12 @@ begin
 				file_close(solucion);
 			else
 				write (texto1, string'(";"));
-				write(texto1, string'("   %("));
-				write(texto1, conv_integer(hcount));
-				write(texto1, string'(","));
-				write(texto1, conv_integer(vcount));
-				write(texto1, string'(")"));
-				writeline (solucion, texto1);
+				--write(texto1, string'("   %("));
+				--write(texto1, conv_integer(hcount));
+				--write(texto1, string'(","));
+				--write(texto1, conv_integer(vcount));
+				--write(texto1, string'(")"));
+				--writeline (solucion, texto1);
 			end if;
 		end if;
 	end if;
@@ -216,12 +216,12 @@ begin
 				file_close(solucion);
 			else
 				write (texto1, string'(";"));
-				write(texto1, string'("   %("));
-				write(texto1, conv_integer(hcount));
-				write(texto1, string'(","));
-				write(texto1, conv_integer(vcount));
-				write(texto1, string'(")"));
-				writeline (solucion, texto1);
+				--write(texto1, string'("   %("));
+				--write(texto1, conv_integer(hcount));
+				--write(texto1, string'(","));
+				--write(texto1, conv_integer(vcount));
+				--write(texto1, string'(")"));
+				--writeline (solucion, texto1);
 			end if;
 		end if;
 	end if;
@@ -243,9 +243,9 @@ resultado: process(vcount)
 		write (texto1, string'("run('resultados1.m');"));
 		writeline (solucion, texto1);
 
-		write (texto1, string'("imagen(:,:,1)=r.*16;"));
-		write (texto1, string'("imagen(:,:,2)=g.*16;"));
-		write (texto1, string'("imagen(:,:,3)=b.*16;"));
+		write (texto1, string'("imagen(:,:,1)=uint8(r.*16);"));
+		write (texto1, string'("imagen(:,:,2)=uint8(g.*16);"));
+		write (texto1, string'("imagen(:,:,3)=uint8(b.*16);"));
 		writeline (solucion, texto1);
 
 		write (texto1, string'("imshow(imagen);"));

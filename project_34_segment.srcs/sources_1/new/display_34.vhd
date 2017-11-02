@@ -190,6 +190,7 @@ rect_segments: process(hcount)
     variable val: INTEGER ;
     variable a1: std_logic := '0';
     variable a2: std_logic := '0';
+    variable adiag: integer;
 
 begin
 
@@ -220,7 +221,8 @@ begin
     svx5 := posx + dl - lw;
     svx6 := posx + dl;
     
-    svy1 := posy + lw;
+    --svy1 := posy + lw;
+    svy1 := posy;
     svy2 := posy + dh/4;
 
     svy3 := posy + dh/4;
@@ -230,7 +232,8 @@ begin
     svy6 := posy + 3*dh/4;
 
     svy7 := posy + 3*dh/4;
-    svy8 := posy + dh - lw;
+    --svy8 := posy + dh - lw;
+    svy8 := posy + dh;
 
     a1:='0';
 	--SEGMENTOS HORIZONTALES
@@ -304,6 +307,8 @@ begin
 	val:=conv_integer(vcount);
     
     a2:='0';
+    adiag:=lw/3;
+    
     --evaluo si el puntero hcount se encuentra en alguno de los segmentos de recta, y lo pinto en pantalla
     --rectangulo izquierdo (base * altura)= (segmento 1)* (segmento 9 + segmento 16 + segmento 25 + segmento 32)
     if ( hcount >= svx2 and hcount <= svx3)	then
@@ -315,12 +320,12 @@ begin
             m:=(svy2 - svy1)/(svx3-svx2);
 
             sd4 := -(val - svy2)/m+svx2;
-            sd4d:= sd4 -lw/2;
-            sd4u:= sd4 +lw/2;
+            sd4d:= sd4 -adiag;
+            sd4u:= sd4 +adiag;
 
             sd5 := (val - svy1)/m+svx2;
-            sd5d:= sd5 -lw/2;
-            sd5u:= sd5 +lw/2;
+            sd5d:= sd5 -adiag;
+            sd5u:= sd5 +adiag;
 
             if(    segments(3) ='1' and hcount >= sd4d and hcount <= sd4u) then
                 a2 :='1';
@@ -337,12 +342,12 @@ begin
             m:=(svy4-svy3)/(svx3-svx2);
 
             sd11  := -(val-svy4)/m+svx2;
-            sd11d :=  sd11-lw/2;
-            sd11u :=  sd11 +lw/2;
+            sd11d :=  sd11-adiag;
+            sd11u :=  sd11 +adiag;
 
             sd12 := (val - svy3)/m+svx2;
-            sd12d:= sd12 -lw/2;
-            sd12u:= sd12 +lw/2;
+            sd12d:= sd12 -adiag;
+            sd12u:= sd12 +adiag;
             if( segments(10)='1' and hcount >= sd11d and  hcount <= sd11u ) then
                 a2 :='1';
             elsif ( segments(11)='1' and hcount >= sd12d and  hcount <= sd12u ) then
@@ -354,12 +359,12 @@ begin
             m:=(svy6-svy5)/(svx3-svx2);
 
             sd20  := -(val-svy6)/m+svx2;
-            sd20d :=  sd20-lw/2;
-            sd20u :=  sd20 +lw/2;
+            sd20d :=  sd20-adiag;
+            sd20u :=  sd20 +adiag;
 
             sd21 := (val - svy5)/m+svx2;
-            sd21d:= sd21 -lw/2;
-            sd21u:= sd21 +lw/2;
+            sd21d:= sd21 -adiag;
+            sd21u:= sd21 +adiag;
 
             if (segments(19)='1' and hcount >= sd20d and hcount <= sd20u) then
                 a2 :='1';
@@ -372,12 +377,12 @@ begin
             m:=(svy8-svy7)/(svx3-svx2);
 
             sd27  := -(val-svy8)/m+svx2;
-            sd27d :=  sd27-lw/2;
-            sd27u :=  sd27 +lw/2;
+            sd27d :=  sd27-adiag;
+            sd27u :=  sd27 +adiag;
 
             sd28 := (val - svy7)/m+svx2;
-            sd28d:= sd28 -lw/2;
-            sd28u:= sd28 +lw/2;
+            sd28d:= sd28 -adiag;
+            sd28u:= sd28 +adiag;
             if (segments(26)='1' and hcount >= sd27d and hcount <= sd27u) then
                 a2 :='1';
             elsif(segments(27)='1' and hcount >= sd28d and hcount <= sd28u) then
@@ -390,12 +395,12 @@ begin
         --segundo recuadro
             m:=(svy2 - svy1)/(svx3-svx2);
             sd7 := -(val - svy2)/m+svx4;
-            sd7d:= sd7 -lw/2;
-            sd7u:= sd7 +lw/2;
+            sd7d:= sd7 -adiag;
+            sd7u:= sd7 +adiag;
 
             sd8 := (val - svy1)/m+svx4;
-            sd8d:= sd8 -lw/2;
-            sd8u:= sd8 +lw/2;
+            sd8d:= sd8 -adiag;
+            sd8u:= sd8 +adiag;
             if(segments(6)='1' and hcount >= sd7d and  hcount <= sd7u) then
                 a2 :='1';
             elsif ( segments(7)='1' and hcount >= sd8d and  hcount <= sd8u ) then
@@ -405,12 +410,12 @@ begin
         elsif(vcount >= svy3 and vcount <= svy4) then
             m:=(svy4-svy3)/(svx3-svx2);
             sd14 := -(val - svy4)/m+svx4;
-            sd14d:= sd14 -lw/2;
-            sd14u:= sd14 +lw/2;
+            sd14d:= sd14 -adiag;
+            sd14u:= sd14 +adiag;
 
             sd15 := (val - svy3)/m+svx4;
-            sd15d:= sd15 -lw/2;
-            sd15u:= sd15 +lw/2;
+            sd15d:= sd15 -adiag;
+            sd15u:= sd15 +adiag;
             if ( segments(13)='1' and hcount >= sd14d and  hcount <= sd14u ) then
                 a2 :='1';
             elsif ( segments(14)='1' and hcount >= sd15d and  hcount <= sd15u) then
@@ -421,12 +426,12 @@ begin
             --sexto recuadro
             m:=(svy6-svy5)/(svx3-svx2);
             sd23 := -(val - svy6)/m+svx4;
-            sd23d:= sd23 -lw/2;
-            sd23u:= sd23 +lw/2;
+            sd23d:= sd23 -adiag;
+            sd23u:= sd23 +adiag;
 
             sd24 := (val - svy5)/m+svx4;
-            sd24d:= sd24 -lw/2;
-            sd24u:= sd24 +lw/2;
+            sd24d:= sd24 -adiag;
+            sd24u:= sd24 +adiag;
             
             if ( segments(22)='1' and hcount >= sd23d and  hcount <= sd23u ) then
                 a2 :='1';
@@ -438,12 +443,12 @@ begin
         --octavo recuadro
             m:=(svy8-svy7)/(svx3-svx2);
             sd30 := -(val - svy8)/m+svx4;
-            sd30d:= sd30 -lw/2;
-            sd30u:= sd30 +lw/2;
+            sd30d:= sd30 -adiag;
+            sd30u:= sd30 +adiag;
 
             sd31 := (val - svy7)/m+svx4;
-            sd31d:= sd31 -lw/2;
-            sd31u:= sd31 +lw/2;
+            sd31d:= sd31 -adiag;
+            sd31u:= sd31 +adiag;
 
             if ( segments(29)='1' and hcount >= sd30d and  hcount <= sd30u ) then
                 a2 :='1';

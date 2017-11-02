@@ -1,5 +1,5 @@
 @echo off
-set xv_path=D:\\Programas\\xilinx\\Vivado\\2017.2\\bin
+set xv_path=C:\\Xilinx\\Vivado\\2017.2\\bin
 call %xv_path%/xsim test_imp_sim_behav -key {Behavioral:sim_1:Functional:test_imp_sim} -tclbatch test_imp_sim.tcl -log simulate.log
 if "%errorlevel%"=="0" goto SUCCESS
 if "%errorlevel%"=="1" goto END

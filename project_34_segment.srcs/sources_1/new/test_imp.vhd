@@ -148,7 +148,7 @@ architecture Behavioral of test_imp is
 	signal px,px1,px2,px3,px4: integer:=0;
 	signal py,py1,py2,py3,py4: integer:=0;
 	signal cont: std_logic_vector(3 downto 0):="0000";
-	signal cont1: std_logic_vector(5 downto 0):="000000";
+	signal cont1: std_logic_vector(3 downto 0):="0000";
 
 begin
 
@@ -270,28 +270,34 @@ color: process(sel,paint0,hcount)
 	constant cedulas: std_logic_vector(11 downto 0):="000011110000";
 	constant nombres: std_logic_vector(11 downto 0):="000000001111";
 	constant grupo: std_logic_vector(11 downto 0):="100010001000";
+	variable letra: std_logic_vector(11 downto 0):="000000000000";
 	variable fondo: std_logic_vector(11 downto 0):="000000000000";
 begin
-	if(cont<15 and hcount<640) then
-		cont<=cont+'1';
-	else
+	if(hcount=0) then
 		cont<="0000";
-		cont1<=cont1+'1';
-		if hcount=639 then
-			cont1<="000000";
+		cont1<="0000";
+	else
+		if(cont = 0)then
+			cont1<=cont1 + '1';
 		end if;
 
-
+		cont<=cont + '1';
 	end if;
 
-	if sel= "00" and paint0='1' then --APELLIDOS
-		rgb_aux<=apellidos;
-	elsif sel= "01" and paint0='1' then --CEDULAS
-		rgb_aux<=cedulas;
-	elsif sel= "10" and paint0='1' then --NOMBRES
-		rgb_aux<=nombres;
-	elsif sel= "11"  and paint0='1' then --GRUPO
-		rgb_aux<=grupo;
+
+	
+
+	if paint0='1' then
+		if sel= "00" then --APELLIDOS
+			letra:=apellidos;
+		elsif sel= "01" then --CEDULAS
+			letra:=cedulas;
+		elsif sel= "10" then --NOMBRES
+			letra:=nombres;
+		else --GRUPO
+			letra:=grupo;
+		end if;
+		rgb_aux<=letra;
 	else
 		if sel= "00" then --APELLIDOS
 			fondo:= not apellidos;
@@ -302,6 +308,7 @@ begin
 		else --GRUPO
 			fondo:=not grupo;
 		end if;
+
 		rgb_aux<=fondo+cont1;
 	end if;
 end process;
